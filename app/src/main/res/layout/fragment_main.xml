@@ -6,8 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainFragment">
 
-
-
     <TextView
         android:id="@+id/carModelTextView"
         android:layout_width="wrap_content"
@@ -99,6 +97,7 @@
         >
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/washCardView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cardElevation="12dp"
@@ -120,7 +119,6 @@
                     android:layout_height="70dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_car_wash_24"
-
                     />
 
                 <TextView
@@ -129,6 +127,7 @@
                     android:text="Мойка"
                     android:textSize="18sp"
                     android:layout_gravity="center_horizontal"
+
                     />
 
             </LinearLayout>
@@ -137,6 +136,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/refillCardView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cardElevation="12dp"
@@ -174,6 +174,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/parkingCardView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cardElevation="12dp"
@@ -209,6 +210,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/ticketCardView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cardElevation="12dp"
@@ -244,6 +246,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/serviceCardView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cardElevation="12dp"
@@ -278,6 +281,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/otherCardView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cardElevation="12dp"
