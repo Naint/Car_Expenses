@@ -21,7 +21,9 @@ data class Car(
     @ColumnInfo(name = "fuelType")
     var fuelType : String,
     @ColumnInfo(name = "otherInfo")
-    var otherInfo : String
+    var otherInfo : String,
+    @ColumnInfo(name = "selectedCar")
+    var selectedCar : Boolean
 )
 
 /*

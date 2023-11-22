@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.carexpenses.R
@@ -28,7 +29,7 @@ class MainFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-     lateinit var carViewModel: CarViewModel
+    lateinit var carViewModel: CarViewModel
 
     private var _binding : FragmentMainBinding? = null
     private val binding get() = _binding!!
@@ -40,7 +41,6 @@ class MainFragment : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
         carViewModel = ViewModelProvider(this)[CarViewModel::class.java]
-
 
     }
 
@@ -55,18 +55,6 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
- /*       carViewModel.getAllCars().observe(this, {
-
-        })*/
-
-        /*val car = Car(null, "Honda", "Civic", 2019, 20, "FK7-1001764", "Дизель", "Info")
-        carViewModel.insertCar(car)*/
-
-
-        /*val db = MainDB.getDatabase(requireContext())*/
-        carViewModel.initDataBase()
         binding.washCardView.setOnClickListener{
             val buff = showWashesDialog()
         }
@@ -75,7 +63,9 @@ class MainFragment : Fragment() {
             showRefillDialog()
         }
 
-
+        binding.addCarButton.setOnClickListener{
+            showAddCarDialog()
+        }
 
     }
 
@@ -117,6 +107,30 @@ class MainFragment : Fragment() {
         buttonExit?.setOnClickListener{
             dialog.cancel()
         }
+    }
+
+    private fun showAddCarDialog(){
+        val builder = AlertDialog.Builder(requireContext())
+        val customView = LayoutInflater.from(requireContext()).inflate(R.layout.add_car_menu, null)
+        builder.setView(customView)
+
+        val dialog = builder.create()
+        dialog.show()
+
+        val buttonAddCar = customView.findViewById<Button>(R.id.saveCar)
+
+        buttonAddCar.setOnClickListener{
+
+            val brand = customView.findViewById<EditText>(R.id.brandEditText).text.toString()
+            val model = customView.findViewById<EditText>(R.id.modelEditText).text.toString()
+            val mileage = customView.findViewById<EditText>(R.id.mileageEditText).text.toString()
+            val createYear = customView.findViewById<EditText>(R.id.createYearEditText).text.toString()
+            val vin = customView.findViewById<EditText>(R.id.vinEditText).text.toString()
+            val fuelType = customView.findViewById<EditText>(R.id.fuelTypeEditText).text.toString()
+
+            carViewModel.insertCar(Car(null, brand, model, 2017, 20, "FK7", fuelType, "-", false))
+        }
+
     }
 
 

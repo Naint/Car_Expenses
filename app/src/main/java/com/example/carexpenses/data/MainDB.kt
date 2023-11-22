@@ -12,16 +12,6 @@ abstract class MainDB: RoomDatabase() {
 
     abstract fun carDao(): CarDao
 
-/*    companion object{
-        fun getDb(context: Context): MainDB {
-            return Room.databaseBuilder(
-                context.applicationContext,
-                MainDB::class.java,
-                "main.db"
-            ).build()
-        }
-    }*/
-
     companion object {
         @Volatile
         private var INSTANCE: MainDB? = null
@@ -31,7 +21,7 @@ abstract class MainDB: RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     MainDB::class.java,
-                    "main.db"
+                    "main_1.db"
                 ).build()
                 INSTANCE = instance
                 instance
