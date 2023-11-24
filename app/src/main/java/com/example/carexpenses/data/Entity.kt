@@ -2,6 +2,7 @@ package com.example.carexpenses.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "cars")
@@ -26,13 +27,31 @@ data class Car(
     var selectedCar : Boolean
 )
 
-/*
-@Entity(tableName = "expenses")
+@Entity(tableName = "expenses",
+    foreignKeys = [
+        ForeignKey(
+            entity = Car::class,
+            parentColumns = ["id"],
+            childColumns = ["carId"],
+            onDelete = ForeignKey.CASCADE
+        )
+    ]
+)
 data class Expense(
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,
     @ColumnInfo(name = "typeExpense")
-    var typeExpense : String
+    var typeExpense : String,
+    @ColumnInfo(name = "mileage")
+    var mileage : Int,
+    @ColumnInfo(name = "date")
+    var date : String,
+    @ColumnInfo(name = "cost")
+    var cost : Int,
+    @ColumnInfo(name = "comment")
+    var comment : String,
+    @ColumnInfo(name = "carId")
+    var carId : Int
 )
 
 @Entity(tableName = "services")
@@ -44,7 +63,20 @@ data class Service(
 @Entity(tableName = "refill")
 data class Refill(
     @PrimaryKey(autoGenerate = true)
-    var id: Int? = null
+    var id: Int? = null,
+    @ColumnInfo(name = "date")
+    var date : String,
+    @ColumnInfo(name = "mileage")
+    var mileage : Int,
+    @ColumnInfo(name = "price")
+    var price : Double,
+    @ColumnInfo(name = "fuelType")
+    var fuelType : String,
+    @ColumnInfo(name = "capacity")
+    var capacity : Int,
+    @ColumnInfo(name = "pricePerLiter")
+    var pricePerLiter : Double,
+    @ColumnInfo(name = "comment")
+    var comment : String,
 )
-*/
 

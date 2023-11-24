@@ -8,17 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.carexpenses.R
 import com.example.carexpenses.data.Car
-import com.example.carexpenses.data.MainDB
 import com.example.carexpenses.databinding.FragmentMainBinding
-import com.example.carexpenses.viewmodels.CarViewModel
-import java.nio.file.attribute.AclEntry.Builder
-import java.util.*
-import kotlin.concurrent.schedule
+import com.example.carexpenses.screens.main.CarViewModel
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -40,7 +34,7 @@ class MainFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-        carViewModel = ViewModelProvider(this)[CarViewModel::class.java]
+
 
     }
 
@@ -49,36 +43,66 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
+
+        //carViewModel = ViewModelProvider(this)[CarViewModel::class.java]
+
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        onClickListeners()
 
+        var arr : List<Car>
+
+        /*carViewModel.getlAllCarsObsevers().observe(this, { it ->
+            Log.i("EPTA", "mazafaka")
+        })*/
+
+
+
+        val carViewModel = ViewModelProvider(this).get(CarViewModel::class.java)
+        carViewModel.initDataBase()
+        carViewModel.insert(Car(null, "Honda", "model", 2017, 20, "vin", "fuelType", "-", false)){}
+
+        carViewModel.getAllCars().observe(this, {listCar ->
+
+            arr = listCar
+
+
+            Log.i("info", arr[0].brand)
+
+        })
+
+
+
+    }
+
+    private fun onClickListeners(){
         binding.washCardView.setOnClickListener{
-            val buff = showWashesDialog()
+            showWashesDialog()
         }
 
         binding.refillCardView.setOnClickListener{
             showRefillDialog()
         }
 
-        binding.addCarButton.setOnClickListener{
-            showAddCarDialog()
+        binding.parkingCardView.setOnClickListener{
+            showAddParkingDialog()
         }
 
+        binding.ticketCardView.setOnClickListener{
+            showAddTicketDialog()
+        }
+
+/*        binding.addCarButton.setOnClickListener{
+            showAddCarDialog()
+        }*/
+
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MainFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
 
 
     private fun showWashesDialog(){
@@ -89,7 +113,7 @@ class MainFragment : Fragment() {
         val dialog = builder.create()
         dialog.show()
 
-        val buttonExit = customView.findViewById<Button>(R.id.buttonExit)
+        val buttonExit = customView.findViewById<Button>(R.id.exitWashDialog)
         buttonExit?.setOnClickListener{
             dialog.cancel()
         }
@@ -103,13 +127,13 @@ class MainFragment : Fragment() {
         val dialog = builder.create()
         dialog.show()
 
-        val buttonExit = customView.findViewById<Button>(R.id.buttonExit)
+        val buttonExit = customView.findViewById<Button>(R.id.exitRefillDialog)
         buttonExit?.setOnClickListener{
             dialog.cancel()
         }
     }
 
-    private fun showAddCarDialog(){
+/*    private fun showAddCarDialog(){
         val builder = AlertDialog.Builder(requireContext())
         val customView = LayoutInflater.from(requireContext()).inflate(R.layout.add_car_menu, null)
         builder.setView(customView)
@@ -128,9 +152,54 @@ class MainFragment : Fragment() {
             val vin = customView.findViewById<EditText>(R.id.vinEditText).text.toString()
             val fuelType = customView.findViewById<EditText>(R.id.fuelTypeEditText).text.toString()
 
-            carViewModel.insertCar(Car(null, brand, model, 2017, 20, "FK7", fuelType, "-", false))
+            carViewModel.insertCar(Car(null, brand, model, 2017, 20, vin, fuelType, "-", false))
         }
 
+        val buttonExit = customView.findViewById<Button>(R.id.exitCarMenu)
+        buttonExit?.setOnClickListener{
+            dialog.cancel()
+        }
+
+    }*/
+
+    private fun showAddParkingDialog(){
+        val builder = AlertDialog.Builder(requireContext())
+        val customView = LayoutInflater.from(requireContext()).inflate(R.layout.add_parking_menu, null)
+        builder.setView(customView)
+
+        val dialog = builder.create()
+        dialog.show()
+
+        val buttonExit = customView.findViewById<Button>(R.id.exitParkingDialog)
+        buttonExit?.setOnClickListener{
+            dialog.cancel()
+        }
+
+    }
+
+    private fun showAddTicketDialog(){
+        val builder = AlertDialog.Builder(requireContext())
+        val customView = LayoutInflater.from(requireContext()).inflate(R.layout.add_ticket_menu, null)
+        builder.setView(customView)
+
+        val dialog = builder.create()
+        dialog.show()
+
+        val buttonExit = customView.findViewById<Button>(R.id.exitTicketDialog)
+        buttonExit?.setOnClickListener{
+            dialog.cancel()
+        }
+    }
+
+    companion object {
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            MainFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
+                }
+            }
     }
 
 
