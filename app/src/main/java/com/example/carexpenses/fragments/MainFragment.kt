@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.carexpenses.R
 import com.example.carexpenses.data.Car
@@ -43,7 +45,7 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
-
+        carViewModel = ViewModelProvider(this).get(CarViewModel::class.java)
         //carViewModel = ViewModelProvider(this)[CarViewModel::class.java]
 
 
@@ -52,30 +54,41 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        carViewModel.initDataBase()
         onClickListeners()
 
-        var arr : List<Car>
 
-        /*carViewModel.getlAllCarsObsevers().observe(this, { it ->
-            Log.i("EPTA", "mazafaka")
-        })*/
+        getCars()
 
+    }
 
-
-        val carViewModel = ViewModelProvider(this).get(CarViewModel::class.java)
-        carViewModel.initDataBase()
-        carViewModel.insert(Car(null, "Honda", "model", 2017, 20, "vin", "fuelType", "-", false)){}
-
-        carViewModel.getAllCars().observe(this, {listCar ->
-
-            arr = listCar
-
-
-            Log.i("info", arr[0].brand)
-
-        })
+    //Переписать по возможности
+    private fun getCars(){
+        var selectedCar = Car(-1, "-", "-", -1, -1, "-", "-", "-", false)
+        carViewModel.getAllCars().observe(this) {listCar ->
+            for (i in 0..listCar.size-1){
+                if(listCar[i].selectedCar == true){
+                    selectedCar = listCar[i]
+                }
+            }
+            setInfoUpperPanel(selectedCar)
+        }
+    }
 
 
+
+
+
+    private fun setInfoUpperPanel(selectedCar : Car){
+        binding.carModelTextView.text = "${selectedCar.brand} ${selectedCar.model}"
+        binding.mileageTextView.text = "Пробег: ${selectedCar.mileage} км"
+        binding.typeFuelTextView.text = "Тип топлива: ${selectedCar.fuelType}"
+        binding.bankCapacityTextView.text = "Год выпуска: ${selectedCar.createYear}"
+
+    }
+
+    private fun init(){
 
     }
 
@@ -96,9 +109,9 @@ class MainFragment : Fragment() {
             showAddTicketDialog()
         }
 
-/*        binding.addCarButton.setOnClickListener{
+        binding.addCarButton.setOnClickListener{
             showAddCarDialog()
-        }*/
+        }
 
     }
 
@@ -133,7 +146,7 @@ class MainFragment : Fragment() {
         }
     }
 
-/*    private fun showAddCarDialog(){
+    private fun showAddCarDialog(){
         val builder = AlertDialog.Builder(requireContext())
         val customView = LayoutInflater.from(requireContext()).inflate(R.layout.add_car_menu, null)
         builder.setView(customView)
@@ -152,7 +165,7 @@ class MainFragment : Fragment() {
             val vin = customView.findViewById<EditText>(R.id.vinEditText).text.toString()
             val fuelType = customView.findViewById<EditText>(R.id.fuelTypeEditText).text.toString()
 
-            carViewModel.insertCar(Car(null, brand, model, 2017, 20, vin, fuelType, "-", false))
+            //carViewModel.insertCar(Car(null, brand, model, 2017, 20, vin, fuelType, "-", false))
         }
 
         val buttonExit = customView.findViewById<Button>(R.id.exitCarMenu)
@@ -160,7 +173,7 @@ class MainFragment : Fragment() {
             dialog.cancel()
         }
 
-    }*/
+    }
 
     private fun showAddParkingDialog(){
         val builder = AlertDialog.Builder(requireContext())

@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    tools:menu="@menu/nav_menu">
+    tools:menu="@menu/nav_menu"
+    android:background="#0B0718"
+    >
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,7 +29,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="#524F9D"
         app:menu="@menu/nav_menu"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
         >
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
