@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#0000"
+    android:background="#0B0718"
     android:id="@+id/add_wash_menu"
     >
 
@@ -20,11 +20,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/days_one"
                 android:text="Мойка"
-                android:textSize="30sp"/>
+                android:layout_marginTop="10dp"
+
+                android:textColor="@color/white"
+                android:textSize="25sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -35,19 +40,23 @@
             >
 
             <EditText
+                android:id="@+id/dateInfoWash"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/edit_text_style"
                 android:layout_marginRight="60dp"
                 android:layout_marginBottom="15dp"
+                android:background="@drawable/edit_text_style"
+                android:fontFamily="@font/days_one"
+
                 android:hint="Дата" />
 
             <EditText
+                android:id="@+id/mileageInfoWash"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_style"
-
+                android:fontFamily="@font/days_one"
                 android:hint="Пробег" />
         </LinearLayout>
 
@@ -56,12 +65,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <EditText
+                android:id="@+id/costInfoWash"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/edit_text_style"
                 android:layout_marginBottom="15dp"
-                android:hint="Стоимость" />
+                android:hint="Стоимость"
+                android:fontFamily="@font/days_one"/>
         </LinearLayout>
 
         <LinearLayout
@@ -69,11 +80,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <EditText
+                android:id="@+id/commentInfoWash"
                 android:layout_width="300dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/edit_text_style"
-                android:hint="Комментарий" />
+                android:hint="Комментарий"
+                android:fontFamily="@font/days_one"/>
         </LinearLayout>
 
         <LinearLayout
@@ -88,16 +101,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Выйти"
+                android:textSize="12sp"
+                android:fontFamily="@font/days_one"
                 android:layout_marginRight="80dp"
-                android:backgroundTint="#3E5F8A"
+                android:backgroundTint="#524F9D"
                 />
 
             <Button
-                android:id="@+id/buttonSave"
+                android:id="@+id/saveWashInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Сохранить"
-                android:backgroundTint="#3E5F8A"
+                android:textSize="12sp"
+                android:fontFamily="@font/days_one"
+                android:backgroundTint="#524F9D"
 
                 />
         </LinearLayout>
