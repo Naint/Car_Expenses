@@ -17,6 +17,7 @@ import com.example.carexpenses.data.Expense
 import com.example.carexpenses.databinding.FragmentMainBinding
 import com.example.carexpenses.screens.main.CarViewModel
 import com.example.carexpenses.screens.main.ExpenseViewModel
+import kotlin.math.exp
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -64,7 +65,7 @@ class MainFragment : Fragment() {
         getCars()
         onClickListeners()
         expenseViewModel.initTable()
-
+        //Log.i("info", getExpenses().toString())
 
 
     }
@@ -254,6 +255,32 @@ class MainFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    private fun getExpenses(){
+
+        var expenses : List<Expense> = mutableListOf()
+        var main : String = "НЕ МОЙКА"
+
+
+        expenseViewModel.getAllExpense().observe(this) {listExpense ->
+
+            expenses = listExpense
+            expenses.get(0).typeExpense
+            //getObserve(expenses)
+            //return@observe x
+        }
+
+        Log.i("wow", main)
+
+        //getObserve(expenses)
+    }
+
+    fun getObserve(lst : List<Expense>){
+        Log.i("wow", lst.get(0).typeExpense)
+
+
+
     }
 
 

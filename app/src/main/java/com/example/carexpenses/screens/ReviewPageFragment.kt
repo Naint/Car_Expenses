@@ -2,18 +2,18 @@ package com.example.carexpenses.screens
 
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
+import android.util.Size
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.carexpenses.R
-import com.example.carexpenses.databinding.FragmentHistoryBinding
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.carexpenses.data.Expense
 import com.example.carexpenses.databinding.FragmentReviewPageBinding
-import com.github.mikephil.charting.charts.BarChart
-import com.github.mikephil.charting.charts.PieChart
-import com.github.mikephil.charting.components.YAxis
+import com.example.carexpenses.screens.main.ExpenseViewModel
 import com.github.mikephil.charting.data.*
-import com.github.mikephil.charting.utils.ColorTemplate
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 
 
 private const val ARG_PARAM1 = "param1"
@@ -27,6 +27,8 @@ class ReviewPageFragment : Fragment() {
     private var _binding : FragmentReviewPageBinding? = null
     private val binding get() = _binding!!
 
+    lateinit var expenseViewModel: ExpenseViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -39,7 +41,7 @@ class ReviewPageFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        expenseViewModel = ViewModelProvider(this).get(ExpenseViewModel::class.java)
         _binding = FragmentReviewPageBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -50,8 +52,8 @@ class ReviewPageFragment : Fragment() {
 
 
 
-            createPieChart()
-            //setBarChart()
+            //createPieChart()
+            setBarChart()
 
 
 
@@ -63,7 +65,7 @@ class ReviewPageFragment : Fragment() {
 
     }
 
-    fun createPieChart() {
+    /*fun createPieChart() {
 
         val pieChart: PieChart = binding.pieChart
         pieChart.description.isEnabled = false
@@ -92,37 +94,99 @@ class ReviewPageFragment : Fragment() {
         pieChart.data.setValueTextColor(Color.parseColor("#533D2B"))
         pieChart.data.setValueTextSize(10f)
 
-        pieChart.animateXY(2000,2000)}
+        pieChart.animateXY(2000,2000)}*/
 
     private fun setBarChart() {
 
         var barChart = binding.barChart
 
         val entries = ArrayList<BarEntry>()
-        entries.add(BarEntry(8f, 0f))
-        entries.add(BarEntry(2f, 1f))
-        entries.add(BarEntry(5f, 2f))
-        entries.add(BarEntry(20f, 3f))
-        entries.add(BarEntry(15f, 4f))
-        entries.add(BarEntry(19f, 5f))
 
-        val barDataSet = BarDataSet(entries, "Cells")
+        expenseViewModel.getAllExpense().observe(this) {listExpense ->
+
+            var sum = 0
+            var listCostMonth = arrayListOf<Int>(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 
-        val labels = ArrayList<String>()
-        labels.add("18-Jan")
-        labels.add("19-Jan")
-        labels.add("20-Jan")
-        labels.add("21-Jan")
-        labels.add("22-Jan")
+            for (i in listExpense.indices){
+
+               when(listExpense[i].date){
+
+                   "1" -> listCostMonth[0] += listExpense[i].cost
+                   "2" -> listCostMonth[1] += listExpense[i].cost
+                   "3" -> listCostMonth[2] += listExpense[i].cost
+                   "4" -> listCostMonth[3] += listExpense[i].cost
+                   "5" -> listCostMonth[4] += listExpense[i].cost
+                   "6" -> listCostMonth[5] += listExpense[i].cost
+                   "7" -> listCostMonth[6] += listExpense[i].cost
+                   "8" -> listCostMonth[7] += listExpense[i].cost
+                   "9" -> listCostMonth[8] += listExpense[i].cost
+                   "10" -> listCostMonth[9] += listExpense[i].cost
+                   "11" -> listCostMonth[10] += listExpense[i].cost
+                   "12" -> listCostMonth[11] += listExpense[i].cost
+               }
+
+                sum += listExpense.get(i).cost
+            }
+
+            for (i in 1..12){
+                entries.add(BarEntry(i.toFloat(),listCostMonth[i-1].toFloat()))
+            }
+
+            barChart.setBackgroundColor(Color.WHITE)
+
+            val barDataSet = BarDataSet(entries, "")
+            barDataSet.color = Color.BLUE
+
+            val data = BarData(barDataSet)
+            data.setValueTextColor(Color.WHITE)
+
+            barChart.description.isEnabled = false
+
+
+            barChart.data = data // set the data and list of lables into chart
+            barChart.animateY(1000)
+
+
+
+            //Log.i("COST", sum.toString())
+
+        }
+
+
+/*        for (i in 1..12){
+            entries.add(BarEntry(i.toFloat(),5f))
+        }
+
+        barChart.setBackgroundColor(Color.WHITE)
+
+
+        val barDataSet = BarDataSet(entries, "")
+        barDataSet.color = Color.BLUE
+
+
+*//*        val labels = ArrayList<String>()
+        labels.add("1")
+        labels.add("12n")
+        labels.add("3")
+        labels.add("4")
+        labels.add("5n")
         labels.add("23-Jan")
+
+        barChart.xAxis.valueFormatter = IndexAxisValueFormatter(labels);*//*
+
         //val data = BarData(labels, barDataSet)
         val data = BarData(barDataSet)
+        data.setValueTextColor(Color.WHITE)
+
         barChart.data = data // set the data and list of lables into chart
-
-
-        barChart.animateY(5000)
+        barChart.animateY(1000)*/
     }
+
+    fun getMonth(str : String) : String{
+        return str.split(".").toTypedArray()[1]
+    }
+
 
     companion object {
 
