@@ -20,8 +20,110 @@
             app:layout_constraintTop_toTopOf="parent">
 
         </com.github.mikephil.charting.charts.PieChart>-->
+        
+        <androidx.cardview.widget.CardView
+            android:id="@+id/expensesChart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="#524F9D"
+            android:backgroundTint="#524F9D"
+            app:cardCornerRadius="12dp"
+            >
 
-        <com.github.mikephil.charting.charts.BarChart
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Всего потрачено \n 610₽"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="5dp"
+                    />
+
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/barChart"
+                    android:layout_width="350dp"
+                    android:layout_height="250dp"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </com.github.mikephil.charting.charts.BarChart>
+
+
+
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="#524F9D"
+            android:backgroundTint="#524F9D"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/expensesChart">
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                >
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="90dp"
+
+                    android:text="Потрачено за месяц"
+                    android:layout_gravity="center_vertical"
+
+                    android:textSize="16sp"
+                    android:fontFamily="@font/days_one"
+                    android:textColor="@color/white" />
+
+
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="1000₽"
+                    android:fontFamily="@font/days_one"
+                    android:gravity="right"
+                    android:textSize="16sp"
+                    android:layout_marginRight="5dp"
+                    />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+
+<!--        <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/barChart"
             android:layout_width="match_parent"
             android:layout_height="300dp"
@@ -32,7 +134,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-        </com.github.mikephil.charting.charts.BarChart>
+        </com.github.mikephil.charting.charts.BarChart>-->
 
 
 

@@ -1,6 +1,8 @@
 package com.example.carexpenses.fragments
 
 import android.app.AlertDialog
+import android.app.DatePickerDialog
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -17,6 +19,8 @@ import com.example.carexpenses.data.Expense
 import com.example.carexpenses.databinding.FragmentMainBinding
 import com.example.carexpenses.screens.main.CarViewModel
 import com.example.carexpenses.screens.main.ExpenseViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.math.exp
 
 private const val ARG_PARAM1 = "param1"
@@ -66,7 +70,9 @@ class MainFragment : Fragment() {
         onClickListeners()
         expenseViewModel.initTable()
         //Log.i("info", getExpenses().toString())
+    }
 
+    private fun init(){
 
     }
 
@@ -74,7 +80,9 @@ class MainFragment : Fragment() {
     private fun getCars(){
         var selectedCar = Car(-1, "-", "-", -1, -1, "-", "-", "-", false)
         carViewModel.getAllCars().observe(this) {listCar ->
+
             for (i in 0..listCar.size-1){
+
                 if(listCar[i].selectedCar == true){
                     selectedCar = listCar[i]
                 }
@@ -147,6 +155,9 @@ class MainFragment : Fragment() {
         val dialog = builder.create()
         dialog.show()
 
+        var date = customView.findViewById<EditText>(R.id.dateInfoWash)
+        date.transformIntoDatePicker(requireContext(),"MM/dd/yyyy")
+
         val buttonExit = customView.findViewById<Button>(R.id.exitWashDialog)
         buttonExit?.setOnClickListener{
             dialog.cancel()
@@ -174,6 +185,9 @@ class MainFragment : Fragment() {
 
         val dialog = builder.create()
         dialog.show()
+
+        val ed = customView.findViewById<EditText>(R.id.dateInfoParking)
+        ed.transformIntoDatePicker(requireContext(),"MM/dd/yyyy")
 
         val buttonExit = customView.findViewById<Button>(R.id.exitParkingDialog)
         buttonExit?.setOnClickListener{
@@ -227,6 +241,9 @@ class MainFragment : Fragment() {
 
         val buttonAddCar = customView.findViewById<Button>(R.id.saveCar)
 
+
+
+
         buttonAddCar.setOnClickListener{
 
             val brand = customView.findViewById<EditText>(R.id.brandEditText).text.toString()
@@ -246,6 +263,33 @@ class MainFragment : Fragment() {
 
     }
 
+    fun EditText.transformIntoDatePicker(context: Context, format: String, maxDate: Date? = null) {
+        isFocusableInTouchMode = false
+        isClickable = true
+        isFocusable = false
+
+        val myCalendar = Calendar.getInstance()
+        val datePickerOnDataSetListener =
+            DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
+                myCalendar.set(Calendar.YEAR, year)
+                myCalendar.set(Calendar.MONTH, monthOfYear)
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                val sdf = SimpleDateFormat(format, Locale.UK)
+                setText(sdf.format(myCalendar.time))
+            }
+
+        setOnClickListener {
+            DatePickerDialog(
+                context, datePickerOnDataSetListener, myCalendar
+                    .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                myCalendar.get(Calendar.DAY_OF_MONTH)
+            ).run {
+                maxDate?.time?.also { datePicker.maxDate = it }
+                show()
+            }
+        }
+    }
+
     companion object {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
@@ -256,33 +300,6 @@ class MainFragment : Fragment() {
                 }
             }
     }
-
-    private fun getExpenses(){
-
-        var expenses : List<Expense> = mutableListOf()
-        var main : String = "НЕ МОЙКА"
-
-
-        expenseViewModel.getAllExpense().observe(this) {listExpense ->
-
-            expenses = listExpense
-            expenses.get(0).typeExpense
-            //getObserve(expenses)
-            //return@observe x
-        }
-
-        Log.i("wow", main)
-
-        //getObserve(expenses)
-    }
-
-    fun getObserve(lst : List<Expense>){
-        Log.i("wow", lst.get(0).typeExpense)
-
-
-
-    }
-
 
 
 

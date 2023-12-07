@@ -2,18 +2,15 @@ package com.example.carexpenses.screens
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
-import android.util.Size
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.carexpenses.data.Expense
 import com.example.carexpenses.databinding.FragmentReviewPageBinding
 import com.example.carexpenses.screens.main.ExpenseViewModel
+import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.*
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 
 
 private const val ARG_PARAM1 = "param1"
@@ -49,19 +46,9 @@ class ReviewPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
-
             //createPieChart()
             setBarChart()
-
-
-
-
-
-
-
-
+            //setMileageChart()
 
     }
 
@@ -98,7 +85,13 @@ class ReviewPageFragment : Fragment() {
 
     private fun setBarChart() {
 
-        var barChart = binding.barChart
+        //https://russianblogs.com/article/2984929939/
+
+        val barChart = binding.barChart
+        val xAxis = barChart.xAxis
+        val axisRightY: YAxis = barChart.axisRight
+        val axisLeftY: YAxis = barChart.axisLeft
+
 
         val entries = ArrayList<BarEntry>()
 
@@ -110,81 +103,69 @@ class ReviewPageFragment : Fragment() {
 
             for (i in listExpense.indices){
 
-               when(listExpense[i].date){
+               when(getMonth(listExpense[i].date)){
 
-                   "1" -> listCostMonth[0] += listExpense[i].cost
-                   "2" -> listCostMonth[1] += listExpense[i].cost
-                   "3" -> listCostMonth[2] += listExpense[i].cost
-                   "4" -> listCostMonth[3] += listExpense[i].cost
-                   "5" -> listCostMonth[4] += listExpense[i].cost
-                   "6" -> listCostMonth[5] += listExpense[i].cost
-                   "7" -> listCostMonth[6] += listExpense[i].cost
-                   "8" -> listCostMonth[7] += listExpense[i].cost
-                   "9" -> listCostMonth[8] += listExpense[i].cost
+                   "01" -> listCostMonth[0] += listExpense[i].cost
+                   "02" -> listCostMonth[1] += listExpense[i].cost
+                   "03" -> listCostMonth[2] += listExpense[i].cost
+                   "04" -> listCostMonth[3] += listExpense[i].cost
+                   "05" -> listCostMonth[4] += listExpense[i].cost
+                   "06" -> listCostMonth[5] += listExpense[i].cost
+                   "07" -> listCostMonth[6] += listExpense[i].cost
+                   "08" -> listCostMonth[7] += listExpense[i].cost
+                   "09" -> listCostMonth[8] += listExpense[i].cost
                    "10" -> listCostMonth[9] += listExpense[i].cost
                    "11" -> listCostMonth[10] += listExpense[i].cost
                    "12" -> listCostMonth[11] += listExpense[i].cost
                }
 
-                sum += listExpense.get(i).cost
+                sum += listExpense[i].cost
             }
 
             for (i in 1..12){
-                entries.add(BarEntry(i.toFloat(),listCostMonth[i-1].toFloat()))
+                entries.add(BarEntry(i.toFloat(), listCostMonth[i-1].toFloat()))
             }
 
-            barChart.setBackgroundColor(Color.WHITE)
+            barChart.setBackgroundColor(Color.parseColor("#524F9D"))
+            xAxis.setDrawAxisLine(false);
+            xAxis.setDrawGridLines(false);
+            xAxis.setDrawLabels(false)
+            xAxis.setCenterAxisLabels(false)
+
+
+
+            axisRightY.setDrawAxisLine(false)
+            axisRightY.setDrawLabels(false)
+            axisLeftY.setDrawAxisLine(false)
+            axisLeftY.setDrawLabels(false)
 
             val barDataSet = BarDataSet(entries, "")
-            barDataSet.color = Color.BLUE
+            barDataSet.color = Color.parseColor("#E6D4FF")
 
             val data = BarData(barDataSet)
             data.setValueTextColor(Color.WHITE)
+            data.setValueTextSize(10f)
+
+
+
+
 
             barChart.description.isEnabled = false
-
-
-            barChart.data = data // set the data and list of lables into chart
-            barChart.animateY(1000)
-
-
-
-            //Log.i("COST", sum.toString())
+            barChart.setDrawBorders(false)
+            barChart.data = data
+            barChart.animateY(5000)
 
         }
 
-
-/*        for (i in 1..12){
-            entries.add(BarEntry(i.toFloat(),5f))
-        }
-
-        barChart.setBackgroundColor(Color.WHITE)
-
-
-        val barDataSet = BarDataSet(entries, "")
-        barDataSet.color = Color.BLUE
-
-
-*//*        val labels = ArrayList<String>()
-        labels.add("1")
-        labels.add("12n")
-        labels.add("3")
-        labels.add("4")
-        labels.add("5n")
-        labels.add("23-Jan")
-
-        barChart.xAxis.valueFormatter = IndexAxisValueFormatter(labels);*//*
-
-        //val data = BarData(labels, barDataSet)
-        val data = BarData(barDataSet)
-        data.setValueTextColor(Color.WHITE)
-
-        barChart.data = data // set the data and list of lables into chart
-        barChart.animateY(1000)*/
     }
 
+
+
+
+
+
     fun getMonth(str : String) : String{
-        return str.split(".").toTypedArray()[1]
+        return str.split("/").toTypedArray()[0]
     }
 
 

@@ -8,12 +8,14 @@
     android:background="#0B0718"
     >
 
+
     <TextView
         android:id="@+id/carModelTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="carName"
         android:textSize="20dp"
+        android:fontFamily="@font/days_one"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -33,6 +35,7 @@
         app:layout_constraintStart_toStartOf="@id/carModelTextView"
         android:layout_marginTop="15dp"
         android:textColor="#F7F7F7"
+        android:fontFamily="@font/days_one"
         android:elevation="1dp"
         />
 
@@ -63,6 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Топливо"
+            android:fontFamily="@font/days_one"
             android:layout_marginRight="50dp"
             android:textColor="#F7F7F7"/>
         <TextView
@@ -70,6 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Размер бака"
+            android:fontFamily="@font/days_one"
             android:textColor="#F7F7F7"/>
     </LinearLayout>
 

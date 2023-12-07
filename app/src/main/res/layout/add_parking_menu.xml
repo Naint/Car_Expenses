@@ -24,6 +24,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Парковка"
+                android:textColor="@color/white"
+                android:fontFamily="@font/days_one"
                 android:textSize="30sp" />
         </LinearLayout>
 
@@ -41,6 +43,7 @@
                 android:layout_marginRight="60dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/edit_text_style"
+                android:fontFamily="@font/days_one"
                 android:hint="Дата" />
 
             <EditText
@@ -48,7 +51,7 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_style"
-
+                android:fontFamily="@font/days_one"
                 android:hint="Пробег" />
         </LinearLayout>
 
@@ -64,7 +67,9 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/edit_text_style"
-                android:hint="Стоимость" />
+                android:hint="Стоимость"
+                android:fontFamily="@font/days_one"
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -78,7 +83,8 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/edit_text_style"
-                android:hint="Комментарий" />
+                android:hint="Комментарий"
+                android:fontFamily="@font/days_one"/>
         </LinearLayout>
 
         <LinearLayout
