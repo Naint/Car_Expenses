@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">Car Expenses</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="main_nav_menu">Главная</string>
     <string name="history_nav_menu">История</string>
     <string name="other_nav_menu">Прочее</string>
+    <string name="save">Сохранить</string>
+    <string name="exit">Выйти</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

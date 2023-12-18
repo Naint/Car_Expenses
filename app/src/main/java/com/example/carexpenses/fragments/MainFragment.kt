@@ -37,7 +37,7 @@ class MainFragment : Fragment() {
 
     private var _binding : FragmentMainBinding? = null
     private val binding get() = _binding!!
-    private var selectedCarId = 8
+    private var selectedCarId = 15
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,27 +69,60 @@ class MainFragment : Fragment() {
         getCars()
         onClickListeners()
         expenseViewModel.initTable()
-        //Log.i("info", getExpenses().toString())
+        //getSelectedCarId()
+
+
+
+        //carViewModel.update(Car(14, "Lada", "Granta",2010, 20, "fk", "100", "s", false)){}
+
     }
 
-    private fun init(){
 
+
+    private fun unSetSelectedCars(){
+        carViewModel.searchSelectedCars().observe(this){ listcar ->
+            for(i in 0..listcar.size-2){
+                listcar[i].selectedCar = false
+                carViewModel.update(listcar[i]){}
+                Log.i("info", "${listcar[i].id} ${listcar[i].model}")
+            }
+        }
     }
+
+    private fun getSelectedCarId() : Int{
+        var id = -1
+        carViewModel.searchSelectedCars().observe(this){ listcar ->
+            for(i in 0..listcar.size-1){
+                listcar[i].selectedCar = false
+                id = listcar[i].id!!.toInt()
+
+            }
+        }
+        Log.i("info", "${id}")
+        return id
+    }
+
 
     //Переписать по возможности
     private fun getCars(){
         var selectedCar = Car(-1, "-", "-", -1, -1, "-", "-", "-", false)
         carViewModel.getAllCars().observe(this) {listCar ->
 
-            for (i in 0..listCar.size-1){
+            if (listCar.isEmpty()){
+                showAddCarDialog()
+            }
 
-                if(listCar[i].selectedCar == true){
+            for (i in listCar.indices){
+
+                if(listCar[i].selectedCar){
                     selectedCar = listCar[i]
                 }
             }
             setInfoUpperPanel(selectedCar)
         }
     }
+
+
 
 
 
@@ -241,9 +274,6 @@ class MainFragment : Fragment() {
 
         val buttonAddCar = customView.findViewById<Button>(R.id.saveCar)
 
-
-
-
         buttonAddCar.setOnClickListener{
 
             val brand = customView.findViewById<EditText>(R.id.brandEditText).text.toString()
@@ -253,7 +283,10 @@ class MainFragment : Fragment() {
             val vin = customView.findViewById<EditText>(R.id.vinEditText).text.toString()
             val fuelType = customView.findViewById<EditText>(R.id.fuelTypeEditText).text.toString()
 
-            carViewModel.insert(Car(null, brand, model, 2020, 20, vin, fuelType, "-", false)){}
+            val car  = Car(null, brand, model, createYear.toInt(), mileage.toInt(), vin, fuelType, "-", true)
+            Log.i("info", car.id.toString())
+            carViewModel.insert(car){}
+            unSetSelectedCars()
         }
 
         val buttonExit = customView.findViewById<Button>(R.id.exitCarMenu)

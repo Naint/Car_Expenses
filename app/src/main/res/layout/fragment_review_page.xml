@@ -43,9 +43,10 @@
                 >
 
                 <TextView
+                    android:id="@+id/sumExpense"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Всего потрачено \n 610₽"
+                    android:text="Всего потрачено \n 0₽"
                     android:layout_marginBottom="10dp"
                     android:textColor="@color/white"
                     android:layout_marginLeft="5dp"

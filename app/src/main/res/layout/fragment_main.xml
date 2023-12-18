@@ -130,6 +130,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Мойка"
+                    android:fontFamily="@font/days_one"
                     android:textSize="18sp"
                     android:layout_gravity="center_horizontal"
 
@@ -172,6 +173,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Заправка"
+                    android:fontFamily="@font/days_one"
                     android:textSize="18sp"
                     android:layout_gravity="center_horizontal"/>
 
@@ -208,6 +210,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Парковка"
+                    android:fontFamily="@font/days_one"
                     android:textSize="18sp"
                     android:layout_gravity="center_horizontal"/>
 
@@ -244,6 +247,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Штраф"
+                    android:fontFamily="@font/days_one"
                     android:textSize="18sp"
                     android:layout_gravity="center_horizontal"/>
 
@@ -279,6 +283,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Сервис"
+                    android:fontFamily="@font/days_one"
                     android:textSize="16sp"
                     android:layout_gravity="center_horizontal"/>
 
@@ -317,6 +322,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:text="Прочее"
+                    android:fontFamily="@font/days_one"
                     android:layout_gravity="center_horizontal"
                     />
 

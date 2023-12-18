@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screens.GarageFragment"
+    android:background="#0B0718"
+    >
+
+    <!--Типы кузова:
+        Кроссовер
+        Внедорожник
+        Седан
+        Хетчбек
+        Универсал
+    -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:columnCount="2"
+                android:rowCount="3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/washCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="0"
+
+                    android:layout_margin="10dp"
+                    android:backgroundTint="#F5F4FB"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="12dp">
+
+                    <LinearLayout
+                        android:layout_width="170dp"
+                        android:layout_height="300dp"
+                        android:layout_rowWeight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/sedan" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/days_one"
+                            android:text="Honda \n Civic"
+                            android:textSize="18sp"
+
+                            />
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Выбрано"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/days_one"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginLeft="15dp"
+                            />
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Изменить"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/days_one"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginLeft="15dp"
+
+                            />
+
+
+
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/refillCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="1"
+
+                    android:layout_margin="10dp"
+                    android:backgroundTint="#F5F4FB"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="12dp"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="170dp"
+                        android:layout_height="300dp"
+                        android:layout_rowWeight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/crossover" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/days_one"
+                            android:text="Honda \n Vezel"
+                            android:textSize="18sp" />
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Выбрать"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/days_one"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginLeft="15dp"
+                            />
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Изменить"
+                            android:textSize="12sp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginLeft="15dp"
+
+
+                            android:fontFamily="@font/days_one"
+
+                            />
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="1"
+                    android:layout_column="1"
+
+                    android:layout_margin="10dp"
+                    android:backgroundTint="#F5F4FB"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="12dp"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="170dp"
+                        android:layout_height="300dp"
+                        android:layout_rowWeight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/jeep" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/days_one"
+                            android:text="Honda \n CR-V"
+                            android:textSize="18sp" />
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Выбрать"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/days_one"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginLeft="15dp"
+                            />
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Изменить"
+                            android:textSize="12sp"
+
+                            android:fontFamily="@font/days_one"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginLeft="15dp"
+
+                            />
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_column="1"
+
+                    android:layout_margin="10dp"
+                    android:backgroundTint="#F5F4FB"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="12dp"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="170dp"
+                        android:layout_height="300dp"
+                        android:layout_rowWeight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/jeep" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/days_one"
+                            android:text="Honda \n CR-V"
+                            android:textSize="18sp" />
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Выбрать"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/days_one"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginLeft="15dp"
+                            />
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Изменить"
+                            android:textSize="12sp"
+
+                            android:fontFamily="@font/days_one"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginLeft="15dp"
+
+                            />
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_column="0"
+
+                    android:layout_margin="10dp"
+                    android:backgroundTint="#F5F4FB"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="12dp"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="170dp"
+                        android:layout_height="300dp"
+                        android:layout_rowWeight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/jeep" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/days_one"
+                            android:text="Honda \n CR-V"
+                            android:textSize="18sp" />
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Выбрать"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/days_one"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginLeft="15dp"
+                            />
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Изменить"
+                            android:textSize="12sp"
+
+                            android:fontFamily="@font/days_one"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginLeft="15dp"
+
+                            />
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <!--<androidx.cardview.widget.CardView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_column="1"
+
+                    android:layout_margin="10dp"
+                    android:backgroundTint="#F5F4FB"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="12dp"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="170dp"
+                        android:layout_height="170dp"
+                        android:layout_rowWeight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/sedan" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/days_one"
+                            android:text="BWM \n  M3"
+                            android:textSize="18sp" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Выбрать"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/days_one"
+                            />
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+    -->
+                <androidx.cardview.widget.CardView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="1"
+                    android:layout_column="0"
+
+                    android:layout_margin="10dp"
+                    android:backgroundTint="#F5F4FB"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="12dp"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="170dp"
+                        android:layout_height="300dp"
+                        android:layout_rowWeight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/hatchback" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/days_one"
+                            android:text="Honda \n    E"
+                            android:textSize="18sp" />
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Выбрать"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/days_one"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginLeft="15dp"
+                            />
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Изменить"
+                            android:textSize="12sp"
+
+                            android:fontFamily="@font/days_one"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginLeft="15dp"
+
+                            />
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
+            </GridLayout>
+
+
+
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </ScrollView>
+
+
+</FrameLayout>

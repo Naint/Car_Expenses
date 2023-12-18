@@ -23,6 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Заправка"
+                android:fontFamily="@font/days_one"
                 android:textColor="@color/white"
                 android:textSize="30sp" />
         </LinearLayout>
@@ -39,6 +40,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginRight="60dp"
                 android:layout_marginBottom="15dp"
+                android:fontFamily="@font/days_one"
                 android:background="@drawable/edit_text_style"
                 android:hint="Дата" />
 
@@ -46,7 +48,7 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_style"
-
+                android:fontFamily="@font/days_one"
                 android:hint="Пробег" />
         </LinearLayout>
 
@@ -61,6 +63,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/edit_text_style"
+                android:fontFamily="@font/days_one"
                 android:hint="Стоимость" />
         </LinearLayout>
 
@@ -77,6 +80,7 @@
                 android:hint="Тип топлива: \n"
                 android:background="@drawable/edit_text_style"
                 android:layout_marginRight="10dp"
+                android:fontFamily="@font/days_one"
                 />
 
             <EditText
@@ -85,12 +89,14 @@
                 android:hint="Объём, л\n"
                 android:background="@drawable/edit_text_style"
                 android:layout_marginRight="10dp"
+                android:fontFamily="@font/days_one"
                 />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Цена за литр"
+                android:fontFamily="@font/days_one"
                 android:background="@drawable/edit_text_style"
                 />
 
@@ -107,6 +113,7 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/edit_text_style"
+                android:fontFamily="@font/days_one"
                 android:hint="Комментарий" />
         </LinearLayout>
 
@@ -121,14 +128,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="80dp"
-                android:backgroundTint="#3E5F8A"
-                android:text="Выйти" />
+                android:backgroundTint="#524F9D"
+                android:text="@string/exit" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#3E5F8A"
-                android:text="Сохранить"
+                android:backgroundTint="#524F9D"
+                android:text="@string/save"
 
                 />
         </LinearLayout>

@@ -98,6 +98,7 @@ class ReviewPageFragment : Fragment() {
         expenseViewModel.getAllExpense().observe(this) {listExpense ->
 
             var sum = 0
+            var sumCost = 0
             var listCostMonth = arrayListOf<Int>(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 
@@ -120,6 +121,7 @@ class ReviewPageFragment : Fragment() {
                }
 
                 sum += listExpense[i].cost
+
             }
 
             for (i in 1..12){
@@ -149,11 +151,12 @@ class ReviewPageFragment : Fragment() {
 
 
 
+            binding.sumExpense.text = "Всего потрачено: \n${sum.toString()}₽"
 
             barChart.description.isEnabled = false
             barChart.setDrawBorders(false)
             barChart.data = data
-            barChart.animateY(5000)
+            barChart.animateY(1300)
 
         }
 

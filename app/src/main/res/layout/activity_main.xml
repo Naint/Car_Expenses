@@ -33,6 +33,8 @@
         app:menu="@menu/nav_menu"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
+        app:itemTextAppearanceActive="@font/days_one"
+        app:itemTextAppearanceInactive="@font/days_one"
         >
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>

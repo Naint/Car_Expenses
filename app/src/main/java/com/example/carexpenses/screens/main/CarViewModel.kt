@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 class CarViewModel(application: Application) : AndroidViewModel(application) {
 
     val context = application
+    var selectedCars = CAR_REPOSITORY.selectedCars
 
     fun initDataBase(){
         val carDao = MainDB.getDatabase(context).carDao()
@@ -29,4 +30,18 @@ class CarViewModel(application: Application) : AndroidViewModel(application) {
 
             }
         }
+
+    fun update(car : Car, OnSuccess:() -> Unit) =
+        viewModelScope.launch(Dispatchers.IO) {
+            CAR_REPOSITORY.updateCar(car){
+
+            }
+        }
+    fun searchSelectedCars() : LiveData<List<Car>>{
+        return CAR_REPOSITORY.selectedCars
+    }
+
+    /*Хранить ID выбранного авто в текущий момент во вью модели и использовать, когда надо*/
+
+
 }

@@ -15,7 +15,13 @@ interface CarDao {
     @Delete
     suspend fun delete(car : Car)
 
+    @Update
+    suspend fun update(car: Car)
+
     @Query("SELECT * FROM cars")
     fun getAllCars(): LiveData<List<Car>>
+
+    @Query("SELECT * FROM cars where selectedCar = 1")
+    fun searchSelectedCar() : LiveData<List<Car>>
 }
 

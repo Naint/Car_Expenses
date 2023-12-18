@@ -93,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="80dp"
-                android:backgroundTint="#3E5F8A"
+                android:backgroundTint="#524F9D"
                 android:text="Выйти" />
 
             <Button
@@ -101,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Сохранить"
-                android:backgroundTint="#3E5F8A"
+                android:backgroundTint="#524F9D"
 
                 />
         </LinearLayout>
