@@ -35,6 +35,7 @@
             android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/dateRefill"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -45,6 +46,7 @@
                 android:hint="Дата" />
 
             <EditText
+                android:id="@+id/mileageRefill"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_style"
@@ -58,6 +60,7 @@
             android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/costRefill"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -75,6 +78,7 @@
             >
 
             <EditText
+                android:id="@+id/typeFuelRefill"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Тип топлива: \n"
@@ -84,6 +88,7 @@
                 />
 
             <EditText
+                android:id="@+id/capacityRefill"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Объём, л\n"
@@ -93,6 +98,7 @@
                 />
 
             <EditText
+                android:id="@+id/costPerLiterRefill"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Цена за литр"
@@ -109,6 +115,7 @@
             android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/commentRefill"
                 android:layout_width="300dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
@@ -132,6 +139,7 @@
                 android:text="@string/exit" />
 
             <Button
+                android:id="@+id/saveRefillInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#524F9D"

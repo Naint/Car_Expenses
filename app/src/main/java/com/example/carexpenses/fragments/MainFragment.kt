@@ -13,10 +13,13 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.example.carexpenses.R
 import com.example.carexpenses.data.Car
 import com.example.carexpenses.data.Expense
+import com.example.carexpenses.data.Refill
 import com.example.carexpenses.databinding.FragmentMainBinding
+import com.example.carexpenses.screens.history.FuelViewModel
 import com.example.carexpenses.screens.main.CarViewModel
 import com.example.carexpenses.screens.main.ExpenseViewModel
 import java.text.SimpleDateFormat
@@ -34,10 +37,11 @@ class MainFragment : Fragment() {
 
     lateinit var carViewModel: CarViewModel
     lateinit var expenseViewModel: ExpenseViewModel
+    lateinit var fuelViewModel: FuelViewModel
 
     private var _binding : FragmentMainBinding? = null
     private val binding get() = _binding!!
-    private var selectedCarId = 15
+    private var selectedCarId = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,8 +58,9 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
-        carViewModel = ViewModelProvider(this).get(CarViewModel::class.java)
-        expenseViewModel = ViewModelProvider(this).get(ExpenseViewModel::class.java)
+        carViewModel = ViewModelProvider(this)[CarViewModel::class.java]
+        expenseViewModel = ViewModelProvider(this)[ExpenseViewModel::class.java]
+        fuelViewModel = ViewModelProvider(this)[FuelViewModel::class.java]
 
 
         return binding.root
@@ -69,7 +74,10 @@ class MainFragment : Fragment() {
         getCars()
         onClickListeners()
         expenseViewModel.initTable()
+        fuelViewModel.initTable()
         //getSelectedCarId()
+
+        fuelViewModel.insert(Refill(null, "12/12/2023", 200,100.0, "s", 2, 23.5, "asda", 1)){}
 
 
 
@@ -79,34 +87,13 @@ class MainFragment : Fragment() {
 
 
 
-    private fun unSetSelectedCars(){
-        carViewModel.searchSelectedCars().observe(this){ listcar ->
-            for(i in 0..listcar.size-2){
-                listcar[i].selectedCar = false
-                carViewModel.update(listcar[i]){}
-                Log.i("info", "${listcar[i].id} ${listcar[i].model}")
-            }
-        }
-    }
 
-    private fun getSelectedCarId() : Int{
-        var id = -1
-        carViewModel.searchSelectedCars().observe(this){ listcar ->
-            for(i in 0..listcar.size-1){
-                listcar[i].selectedCar = false
-                id = listcar[i].id!!.toInt()
-
-            }
-        }
-        Log.i("info", "${id}")
-        return id
-    }
 
 
     //Переписать по возможности
     private fun getCars(){
-        var selectedCar = Car(-1, "-", "-", -1, -1, "-", "-", "-", false)
-        carViewModel.getAllCars().observe(this) {listCar ->
+        var selectedCar = Car(-1, "-", "-", "sedan",-1, -1, "-", "-", "-", false)
+        carViewModel.getAllCars().observe(viewLifecycleOwner) {listCar ->
 
             if (listCar.isEmpty()){
                 showAddCarDialog()
@@ -131,8 +118,8 @@ class MainFragment : Fragment() {
     private fun setInfoUpperPanel(selectedCar : Car){
         binding.carModelTextView.text = "${selectedCar.brand} ${selectedCar.model}"
         binding.mileageTextView.text = "Пробег: ${selectedCar.mileage} км"
-        binding.typeFuelTextView.text = "Тип топлива: ${selectedCar.fuelType}"
-        binding.bankCapacityTextView.text = "Год выпуска: ${selectedCar.createYear}"
+        //binding.typeFuelTextView.text = "Тип топлива: ${selectedCar.fuelType}"
+        //binding.bankCapacityTextView.text = "Год выпуска: ${selectedCar.createYear}"
 
     }
 
@@ -163,9 +150,6 @@ class MainFragment : Fragment() {
 
 
 
-
-
-
     private fun showRefillDialog(){
         val builder = AlertDialog.Builder(requireContext())
         val customView = LayoutInflater.from(requireContext()).inflate(R.layout.add_refill_gas_menu, null)
@@ -174,10 +158,29 @@ class MainFragment : Fragment() {
         val dialog = builder.create()
         dialog.show()
 
+        var ed = customView.findViewById<EditText>(R.id.dateRefill)
+        ed.transformIntoDatePicker(requireContext(),"MM/dd/yyyy")
+
         val buttonExit = customView.findViewById<Button>(R.id.exitRefillDialog)
         buttonExit?.setOnClickListener{
             dialog.cancel()
         }
+
+        val buttonSave = customView.findViewById<Button>(R.id.saveRefillInfo)
+        buttonSave?.setOnClickListener{
+
+            val mileage = customView.findViewById<EditText>(R.id.mileageRefill).text.toString().toInt()
+            val date = customView.findViewById<EditText>(R.id.dateRefill).text.toString()
+            val cost = customView.findViewById<EditText>(R.id.costRefill).text.toString().toDouble()
+            val fuelType = customView.findViewById<EditText>(R.id.typeFuelRefill).text.toString()
+            val capacity = customView.findViewById<EditText>(R.id.capacityRefill).text.toString().toInt()
+            val costPerLiter = customView.findViewById<EditText>(R.id.costPerLiterRefill).text.toString().toDouble()
+            val comment = customView.findViewById<EditText>(R.id.commentRefill).text.toString()
+
+            fuelViewModel.insert(Refill(null, date, mileage, cost, fuelType, capacity, costPerLiter, comment, selectedCarId)){}
+
+        }
+
     }
 
     private fun showWashesDialog(){
@@ -247,6 +250,9 @@ class MainFragment : Fragment() {
         val dialog = builder.create()
         dialog.show()
 
+        val ed = customView.findViewById<EditText>(R.id.dateInfoTicket)
+        ed.transformIntoDatePicker(requireContext(),"MM/dd/yyyy")
+
         val buttonExit = customView.findViewById<Button>(R.id.exitTicketDialog)
         val buttonSave = customView.findViewById<Button>(R.id.saveTicketInfo)
         buttonExit?.setOnClickListener{
@@ -283,10 +289,10 @@ class MainFragment : Fragment() {
             val vin = customView.findViewById<EditText>(R.id.vinEditText).text.toString()
             val fuelType = customView.findViewById<EditText>(R.id.fuelTypeEditText).text.toString()
 
-            val car  = Car(null, brand, model, createYear.toInt(), mileage.toInt(), vin, fuelType, "-", true)
+            val car  = Car(null, brand, model, "sedan", createYear.toInt(), mileage.toInt(), vin, fuelType, "-", true)
             Log.i("info", car.id.toString())
             carViewModel.insert(car){}
-            unSetSelectedCars()
+            //unSetSelectedCars()
         }
 
         val buttonExit = customView.findViewById<Button>(R.id.exitCarMenu)

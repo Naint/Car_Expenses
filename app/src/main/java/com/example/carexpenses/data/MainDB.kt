@@ -7,12 +7,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.carexpenses.data.Car
 import com.example.carexpenses.data.Dao.ExpenseDao
+import com.example.carexpenses.data.Dao.FuelDao
 
-@Database(entities = [Car::class, Expense::class], version = 1)
+@Database(entities = [Car::class, Expense::class, Refill::class], version = 1)
 abstract class MainDB: RoomDatabase() {
 
     abstract fun carDao(): CarDao
     abstract fun expenseDao() : ExpenseDao
+    abstract fun refillDao() : FuelDao
 
     companion object {
         @Volatile
@@ -23,7 +25,7 @@ abstract class MainDB: RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     MainDB::class.java,
-                    "main_2.db"
+                    "mains_1.db"
                 ).build()
                 INSTANCE = instance
                 instance

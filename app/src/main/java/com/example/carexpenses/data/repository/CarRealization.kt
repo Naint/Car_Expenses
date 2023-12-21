@@ -9,8 +9,7 @@ class CarRealization(private val carDao : CarDao) : CarRepository {
     override val allCars: LiveData<List<Car>>
         get() = carDao.getAllCars()
 
-    override val selectedCars: LiveData<List<Car>>
-        get() = carDao.searchSelectedCar()
+
 
     override suspend fun insertCar(car: Car, onSuccess: () -> Unit) {
         carDao.insert(car)

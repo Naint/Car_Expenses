@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HistoryFragment"
+    tools:context=".screens.history.HistoryFragment"
 
     >
 
@@ -18,12 +18,15 @@
             android:layout_height="50dp"
             app:tabMode="fixed"
             app:tabIndicator="@drawable/tab_indicator"
+            app:tabIndicatorColor="@color/white"
+            android:background="#524F9D"
+            app:tabTextColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="#524F9D"
-            app:tabTextColor="@color/white"
             >
+
+
 
 
         </com.google.android.material.tabs.TabLayout>

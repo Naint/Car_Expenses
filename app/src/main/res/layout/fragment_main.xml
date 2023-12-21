@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".MainFragment"
+    tools:context=".fragments.MainFragment"
     android:background="#0B0718"
     >
 
@@ -39,6 +39,17 @@
         android:elevation="1dp"
         />
 
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:elevation="1dp"
+        android:src="@drawable/sedan"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="25dp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/backgroundInfoCar"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
     <ImageButton
         android:id="@+id/addCarButton"
@@ -49,43 +60,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/linearInfoCar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mileageTextView"
-        android:layout_marginTop="50dp"
-        android:elevation="1dp"
-        >
 
-        <TextView
-            android:id="@+id/typeFuelTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Топливо"
-            android:fontFamily="@font/days_one"
-            android:layout_marginRight="50dp"
-            android:textColor="#F7F7F7"/>
-        <TextView
-            android:id="@+id/bankCapacityTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Размер бака"
-            android:fontFamily="@font/days_one"
-            android:textColor="#F7F7F7"/>
-    </LinearLayout>
 
     <ImageView
         android:id="@+id/backgroundInfoCar"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="#524F9D"
+        android:layout_height="220dp"
+        android:layout_marginTop="0dp"
+
+        android:src="@drawable/back_3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
     <GridLayout
         android:layout_width="wrap_content"

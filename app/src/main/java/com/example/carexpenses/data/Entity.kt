@@ -13,6 +13,8 @@ data class Car(
     var brand : String,
     @ColumnInfo(name = "model")
     var model : String,
+    @ColumnInfo(name = "bodyType")
+    var bodyType : String,
     @ColumnInfo(name = "createYear")
     var createYear : Int,
     @ColumnInfo(name = "mileage")
@@ -78,5 +80,7 @@ data class Refill(
     var pricePerLiter : Double,
     @ColumnInfo(name = "comment")
     var comment : String,
+    @ColumnInfo(name = "carId")
+    var carId : Int
 )
 

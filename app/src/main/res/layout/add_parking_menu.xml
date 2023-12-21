@@ -99,14 +99,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="80dp"
                 android:backgroundTint="#3E5F8A"
-                android:text="Выйти" />
+                android:text="@string/exit" />
 
             <Button
                 android:id="@+id/saveParkingInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#3E5F8A"
-                android:text="Сохранить"
+                android:text="@string/save"
 
                 />
         </LinearLayout>

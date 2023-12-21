@@ -5,12 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.carexpenses.*
 import com.example.carexpenses.adapter.ViewPagerAdapter
 import com.example.carexpenses.databinding.FragmentHistoryBinding
 import com.example.carexpenses.databinding.FragmentMainBinding
-import com.example.carexpenses.screens.FuelPageFragment
-import com.example.carexpenses.screens.ReviewPageFragment
+import com.example.carexpenses.screens.history.FuelPageFragment
+import com.example.carexpenses.screens.history.ReviewPageFragment
 import com.example.carexpenses.screens.ServicesPageFragment
 import com.example.carexpenses.screens.TripsPageFragment
 import com.google.android.material.tabs.TabLayoutMediator
@@ -46,7 +45,7 @@ class HistoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val fragmentList  = arrayListOf(ReviewPageFragment(), ServicesPageFragment(), FuelPageFragment(), TripsPageFragment())
+        val fragmentList  = arrayListOf(ReviewPageFragment(), FuelPageFragment())
 
         binding.apply {
             viewPager.adapter = ViewPagerAdapter(fragmentList, this@HistoryFragment.parentFragmentManager, lifecycle)
@@ -54,17 +53,10 @@ class HistoryFragment : Fragment() {
             TabLayoutMediator(tabView, viewPager){ tab, position ->
                 when(position){
 
-                    0 -> { tab.text = "Обзор"
+                    0 -> { tab.text = "Расходы"
                     }
-                    1 -> { tab.text = "Расходы"
+                    1 -> { tab.text = "Топливо"
                     }
-                    2 -> { tab.text = "Топливо"
-
-                    }
-                    3 -> { tab.text = "Поездки"
-
-                    }
-
                 }
             }.attach()
 

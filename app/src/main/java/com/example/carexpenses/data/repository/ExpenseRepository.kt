@@ -9,6 +9,4 @@ interface ExpenseRepository {
 
     suspend fun insertExpense(expense : Expense, onSuccess:() -> Unit)
     suspend fun deleteExpense(expense : Expense, onSuccess:() -> Unit)
-
-
 }

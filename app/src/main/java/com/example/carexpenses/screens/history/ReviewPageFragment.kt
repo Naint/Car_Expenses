@@ -1,5 +1,6 @@
-package com.example.carexpenses.screens
+package com.example.carexpenses.screens.history
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +12,9 @@ import com.example.carexpenses.databinding.FragmentReviewPageBinding
 import com.example.carexpenses.screens.main.ExpenseViewModel
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.*
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 private const val ARG_PARAM1 = "param1"
@@ -83,6 +87,7 @@ class ReviewPageFragment : Fragment() {
 
         pieChart.animateXY(2000,2000)}*/
 
+    @SuppressLint("SimpleDateFormat")
     private fun setBarChart() {
 
         //https://russianblogs.com/article/2984929939/
@@ -91,14 +96,13 @@ class ReviewPageFragment : Fragment() {
         val xAxis = barChart.xAxis
         val axisRightY: YAxis = barChart.axisRight
         val axisLeftY: YAxis = barChart.axisLeft
-
+        val currentDate = SimpleDateFormat("M").format(Date())
 
         val entries = ArrayList<BarEntry>()
 
         expenseViewModel.getAllExpense().observe(this) {listExpense ->
 
             var sum = 0
-            var sumCost = 0
             var listCostMonth = arrayListOf<Int>(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 
@@ -122,6 +126,7 @@ class ReviewPageFragment : Fragment() {
 
                 sum += listExpense[i].cost
 
+                binding.monthCost.text = "${listCostMonth[currentDate.toInt()-1]}₽"
             }
 
             for (i in 1..12){
@@ -150,8 +155,7 @@ class ReviewPageFragment : Fragment() {
 
 
 
-
-            binding.sumExpense.text = "Всего потрачено: \n${sum.toString()}₽"
+            binding.sumExpense.text = "Всего потрачено: \n${sum}₽"
 
             barChart.description.isEnabled = false
             barChart.setDrawBorders(false)
