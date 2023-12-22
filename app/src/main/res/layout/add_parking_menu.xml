@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0B0718"
+    android:background="@color/mainBackground"
     >
 
     <LinearLayout
@@ -37,22 +37,23 @@
 
             <EditText
                 android:id="@+id/dateInfoParking"
+                style="@style/editTextAddMenuStyle"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginRight="60dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/edit_text_style"
-                android:fontFamily="@font/days_one"
-                android:hint="Дата" />
+                android:hint="@string/date" />
 
             <EditText
                 android:id="@+id/mileageInfoParking"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_style"
-                android:fontFamily="@font/days_one"
-                android:hint="Пробег" />
+                style="@style/editTextAddMenuStyle"
+                android:inputType="number"
+                android:hint="@string/mileage" />
         </LinearLayout>
 
         <LinearLayout
@@ -67,8 +68,9 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/edit_text_style"
-                android:hint="Стоимость"
-                android:fontFamily="@font/days_one"
+                android:hint="@string/price"
+                android:inputType="number"
+                style="@style/editTextAddMenuStyle"
                 />
         </LinearLayout>
 
@@ -83,8 +85,8 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/edit_text_style"
-                android:hint="Комментарий"
-                android:fontFamily="@font/days_one"/>
+                android:hint="@string/comment"
+                style="@style/editTextAddMenuStyle"/>
         </LinearLayout>
 
         <LinearLayout
@@ -98,14 +100,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="80dp"
-                android:backgroundTint="#3E5F8A"
+                android:backgroundTint="#524F9D"
                 android:text="@string/exit" />
 
             <Button
                 android:id="@+id/saveParkingInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#3E5F8A"
+                android:backgroundTint="#524F9D"
                 android:text="@string/save"
 
                 />

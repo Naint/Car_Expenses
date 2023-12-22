@@ -3,9 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#0B0718"
     android:id="@+id/add_wash_menu"
-    >
+    android:background="@color/mainBackground">
 
     <LinearLayout
         android:id="@+id/washMenuLay"
@@ -14,8 +13,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -37,8 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            >
+            android:layout_marginTop="10dp">
 
             <EditText
                 android:id="@+id/dateInfoWash"
@@ -47,18 +44,17 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginRight="60dp"
                 android:layout_marginBottom="15dp"
+                style="@style/editTextAddMenuStyle"
                 android:background="@drawable/edit_text_style"
-                android:fontFamily="@font/days_one"
-
-                android:hint="Дата" />
+                android:hint="@string/date" />
 
             <EditText
                 android:id="@+id/mileageInfoWash"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_style"
-                android:fontFamily="@font/days_one"
-                android:hint="Пробег" />
+                style="@style/editTextAddMenuStyle"
+                android:hint="@string/mileage" />
         </LinearLayout>
 
         <LinearLayout
@@ -72,8 +68,8 @@
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/edit_text_style"
                 android:layout_marginBottom="15dp"
-                android:hint="Стоимость"
-                android:fontFamily="@font/days_one"/>
+                android:hint="@string/price"
+                style="@style/editTextAddMenuStyle"/>
         </LinearLayout>
 
         <LinearLayout
@@ -86,16 +82,15 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/edit_text_style"
-                android:hint="Комментарий"
-                android:fontFamily="@font/days_one"/>
+                android:hint="@string/comment"
+                style="@style/editTextAddMenuStyle"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            >
+            android:layout_marginTop="10dp">
 
             <Button
                 android:id="@+id/exitWashDialog"
@@ -105,8 +100,7 @@
                 android:textSize="12sp"
                 android:fontFamily="@font/days_one"
                 android:layout_marginRight="80dp"
-                android:backgroundTint="#524F9D"
-                />
+                android:backgroundTint="#524F9D" />
 
             <Button
                 android:id="@+id/saveWashInfo"
@@ -115,17 +109,9 @@
                 android:text="@string/save"
                 android:textSize="12sp"
                 android:fontFamily="@font/days_one"
-                android:backgroundTint="#524F9D"
-
-                />
+                android:backgroundTint="#524F9D" />
         </LinearLayout>
 
-
-
     </LinearLayout>
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

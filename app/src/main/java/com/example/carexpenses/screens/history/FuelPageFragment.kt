@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.carexpenses.R
+import com.example.carexpenses.data.Car
 import com.example.carexpenses.databinding.FragmentFuelPageBinding
 import com.example.carexpenses.databinding.FragmentReviewPageBinding
 import com.example.carexpenses.screens.main.ExpenseViewModel
@@ -57,6 +58,7 @@ class FuelPageFragment : Fragment() {
 
         setBarChart()
         setLiterChart()
+        getFuels()
 
     }
 
@@ -224,6 +226,13 @@ class FuelPageFragment : Fragment() {
 
     fun getMonth(str : String) : String{
         return str.split("/").toTypedArray()[0]
+    }
+
+    private fun getFuels(){
+        //var selectedCar = Car(-1, "-", "-", "sedan",-1, -1, "-", "-", "-", false)
+        fuelViewModel.getAllFuel().observe(viewLifecycleOwner) {listFuel ->
+            binding.amountRefill.text = listFuel.size.toString()
+        }
     }
 
 

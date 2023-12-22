@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0B0718"
+    android:background="@color/mainBackground"
     >
 
     <LinearLayout
@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:text="Штраф"
                 android:textColor="@color/white"
+                android:fontFamily="@font/days_one"
                 android:textSize="30sp" />
         </LinearLayout>
 
@@ -42,15 +43,16 @@
                 android:layout_marginRight="60dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/edit_text_style"
-                android:hint="Дата" />
+                style="@style/editTextAddMenuStyle"
+                android:hint="@string/date" />
 
             <EditText
                 android:id="@+id/mileageInfoTicket"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_style"
-
-                android:hint="Пробег" />
+                style="@style/editTextAddMenuStyle"
+                android:hint="@string/mileage" />
         </LinearLayout>
 
         <LinearLayout
@@ -65,7 +67,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/edit_text_style"
-                android:hint="Стоимость" />
+                style="@style/editTextAddMenuStyle"
+                android:hint="@string/price" />
         </LinearLayout>
 
         <LinearLayout
@@ -79,7 +82,8 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/edit_text_style"
-                android:hint="Комментарий" />
+                style="@style/editTextAddMenuStyle"
+                android:hint="@string/comment" />
         </LinearLayout>
 
         <LinearLayout

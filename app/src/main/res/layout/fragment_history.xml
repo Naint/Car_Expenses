@@ -19,7 +19,8 @@
             app:tabMode="fixed"
             app:tabIndicator="@drawable/tab_indicator"
             app:tabIndicatorColor="@color/white"
-            android:background="#524F9D"
+            android:background="@color/secondaryColor"
+
             app:tabTextColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

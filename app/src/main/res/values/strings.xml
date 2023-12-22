@@ -6,4 +6,11 @@
     <string name="save">Сохранить</string>
     <string name="exit">Выйти</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="date">Дата</string>
+    <string name="mileage">Пробег</string>
+    <string name="price">Стоимость</string>
+    <string name="comment">Комментарий</string>
+    <string name="type_fuel">Тип топлива\n</string>
+    <string name="volume_l">Объём\n л</string>
+    <string name="price_per_liter">Цена за литр</string>
 </resources>

@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             >
 
-
+            <!--График "Потрачено на топливо"-->
             <androidx.cardview.widget.CardView
                 android:id="@+id/expensesChart"
                 android:layout_width="wrap_content"
@@ -66,9 +66,9 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-
+            <!--График "Топливо залито"-->
             <androidx.cardview.widget.CardView
-
+                android:id="@+id/litresCardView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
@@ -91,7 +91,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_marginBottom="10dp"
-                        android:text="Залито литров \n 0₽"
+                        android:text="Топлива залито \n 0₽"
                         android:textColor="@color/white" />
 
 
@@ -107,6 +107,103 @@
                     </com.github.mikephil.charting.charts.BarChart>
 
 
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+            <!--Плашка "Число заправок"-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/countRefillCardView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#524F9D"
+                android:backgroundTint="#524F9D"
+                app:cardCornerRadius="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/litresCardView">
+
+                <LinearLayout
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="5dp"
+
+                        android:layout_marginRight="90dp"
+                        android:fontFamily="@font/days_one"
+
+                        android:text="Число заправок"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+
+                    <TextView
+                        android:id="@+id/amountRefill"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:fontFamily="@font/days_one"
+                        android:gravity="right"
+                        android:text="1"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+            <!--Плашка "Средние траты за месяц"-->
+            <androidx.cardview.widget.CardView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#524F9D"
+                android:backgroundTint="#524F9D"
+                app:cardCornerRadius="12dp"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/countRefillCardView">
+
+                <LinearLayout
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="5dp"
+
+                        android:layout_marginRight="90dp"
+                        android:fontFamily="@font/days_one"
+
+                        android:text="Средние траты за месяц"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+
+                    <TextView
+
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:fontFamily="@font/days_one"
+                        android:gravity="right"
+                        android:text="1"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
