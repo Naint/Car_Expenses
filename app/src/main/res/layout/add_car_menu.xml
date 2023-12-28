@@ -4,151 +4,176 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:orientation="vertical">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Добавьте транспортное средство"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Добавьте транспортное средство"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/days_one"
+                    android:layout_marginBottom="10dp"
+                    />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/brandEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Марка"
+
+                android:fontFamily="@font/days_one"
                 android:textSize="20sp"
+                android:textStyle="italic"
                 android:layout_marginBottom="10dp"
+
                 />
-        </LinearLayout>
 
-        <EditText
-            android:id="@+id/brandEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Марка"
-            android:fontFamily="@font/days_one"
-            android:textSize="20sp"
-            android:textStyle="italic"
-            android:layout_marginBottom="10dp"
-
-            />
-        <EditText
-            android:id="@+id/modelEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Модель"
-            android:textSize="20sp"
-            android:textStyle="italic"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/days_one"
-
-            />
-        <EditText
-            android:id="@+id/mileageEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Пробег"
-            android:inputType="number"
-            android:textSize="20sp"
-            android:textStyle="italic"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/days_one"
-
-            />
-        <EditText
-            android:id="@+id/createYearEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Год выпуска"
-            android:inputType="number"
-            android:textSize="20sp"
-            android:textStyle="italic"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/days_one"
-
-            />
-        <EditText
-            android:id="@+id/vinEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="VIN"
-            android:textSize="20sp"
-            android:textStyle="italic"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/days_one"
-
-            />
-        <EditText
-            android:id="@+id/fuelTypeEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Тип топлива"
-            android:textSize="20sp"
-            android:textStyle="italic"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/days_one"
-
-            />
-        <EditText
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Тип масла"
-            android:textSize="20sp"
-            android:textStyle="italic"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/days_one"
-
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Госномер"
-            android:textSize="20sp"
-            android:textStyle="italic"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/days_one"
-
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/exitCarMenu"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/modelEditText"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/exit"
-                android:backgroundTint="#524F9D"
-                android:layout_marginRight="120dp"
-                android:textSize="10sp"
+                android:hint="Модель"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/days_one"
+
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                >
+
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteBodyType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Тип кузова"
+                    android:fontFamily="@font/days_one"
+                    android:textSize="20sp"
+                    android:inputType="none">
+
+                </AutoCompleteTextView>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <EditText
+                android:id="@+id/mileageEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Пробег"
+                android:inputType="number"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/days_one"
+
+                />
+            <EditText
+                android:id="@+id/createYearEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Год выпуска"
+                android:inputType="number"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/days_one"
+
+                />
+            <EditText
+                android:id="@+id/vinEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="VIN"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/days_one"
+
+                />
+            <EditText
+                android:id="@+id/fuelTypeEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Тип топлива"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/days_one"
+
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Госномер"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/days_one"
                 />
-            <Button
-                android:id="@+id/saveCar"
-                android:layout_width="wrap_content"
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/save"
-                android:backgroundTint="#524F9D"
-                android:fontFamily="@font/days_one"
-                android:textSize="10sp"
-                />
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/exitCarMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/exit"
+                    android:backgroundTint="#524F9D"
+                    android:layout_marginRight="120dp"
+                    android:textSize="10sp"
+                    android:fontFamily="@font/days_one"
+                    />
+                <Button
+                    android:id="@+id/saveCar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/save"
+                    android:backgroundTint="#524F9D"
+                    android:fontFamily="@font/days_one"
+                    android:textSize="10sp"
+                    />
 
 
+
+
+            </LinearLayout>
 
 
         </LinearLayout>
 
 
-    </LinearLayout>
+
+
+    </ScrollView>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

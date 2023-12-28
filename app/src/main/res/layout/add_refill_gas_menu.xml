@@ -136,6 +136,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="80dp"
                 android:backgroundTint="#524F9D"
+                android:fontFamily="@font/days_one"
+                android:textSize="12sp"
                 android:text="@string/exit" />
 
             <Button
@@ -143,8 +145,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#524F9D"
-                android:text="@string/save"
 
+                android:fontFamily="@font/days_one"
+                android:text="@string/save"
+                android:textSize="12sp"
                 />
         </LinearLayout>
 

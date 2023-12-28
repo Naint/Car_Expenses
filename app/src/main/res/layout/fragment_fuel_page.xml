@@ -41,7 +41,7 @@
                         android:id="@+id/sumExpense"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Потрачено на топливо \n 0₽"
+                        android:text="Потрачено на топливо \n 15500₽"
                         android:layout_marginBottom="10dp"
                         android:textColor="@color/white"
                         android:layout_marginLeft="5dp"
@@ -91,7 +91,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_marginBottom="10dp"
-                        android:text="Топлива залито \n 0₽"
+                        android:text="Топлива залито \n 214 л"
                         android:textColor="@color/white" />
 
 

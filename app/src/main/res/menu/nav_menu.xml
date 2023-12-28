@@ -4,9 +4,7 @@
     <item
         android:id="@+id/main"
         android:title="@string/main_nav_menu"
-        android:icon="@drawable/ic_sport_car"
-
-        />
+        android:icon="@drawable/ic_car_icon" />
     <item
         android:id="@+id/history"
         android:title="@string/history_nav_menu"
@@ -14,7 +12,7 @@
 
     <item
         android:id="@+id/map"
-        android:title="Поездки"
+        android:title="Расписание"
         android:icon="@drawable/ic_maps_24"/>
 
     <item

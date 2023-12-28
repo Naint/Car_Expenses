@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
 import androidx.lifecycle.Observer
@@ -77,10 +80,10 @@ class MainFragment : Fragment() {
         fuelViewModel.initTable()
         //getSelectedCarId()
 
-        fuelViewModel.insert(Refill(null, "12/12/2023", 200,100.0, "s", 2, 23.5, "asda", 1)){}
 
-
-
+        /*fuelViewModel.insert(Refill(null, "06/12/2023", 300,1000.0, "s", 3, 23.5, "asda", 1)){}
+        fuelViewModel.insert(Refill(null, "04/12/2023", 300,500.0, "s", 3, 23.5, "asda", 1)){}
+        fuelViewModel.insert(Refill(null, "05/12/2023", 300,500.0, "s", 3, 23.5, "asda", 1)){}*/
         //carViewModel.update(Car(14, "Lada", "Granta",2010, 20, "fk", "100", "s", false)){}
 
     }
@@ -99,11 +102,13 @@ class MainFragment : Fragment() {
                 showAddCarDialog()
             }
 
+
             for (i in listCar.indices){
 
                 if(listCar[i].selectedCar){
                     selectedCar = listCar[i]
                 }
+                //Log.i("info", listCar[i].id.toString())
             }
             setInfoUpperPanel(selectedCar)
         }
@@ -145,7 +150,6 @@ class MainFragment : Fragment() {
         binding.addCarButton.setOnClickListener{
             showAddCarDialog()
         }
-
     }
 
 
@@ -275,27 +279,43 @@ class MainFragment : Fragment() {
         val customView = LayoutInflater.from(requireContext()).inflate(R.layout.add_car_menu, null)
         builder.setView(customView)
 
+        val buttonAddCar = customView.findViewById<Button>(R.id.saveCar)
+        val buttonExit = customView.findViewById<Button>(R.id.exitCarMenu)
+
+        val items = listOf<String>("Седан", "Хетчбек", "Кроссовер", "Внедорожник")
+        val autoComplete : AutoCompleteTextView = customView.findViewById(R.id.autoCompleteBodyType)
+        val adapter = ArrayAdapter(requireContext(), R.layout.list_body_type, items)
+        autoComplete.setAdapter(adapter)
+        var bodyType = ""
+
         val dialog = builder.create()
         dialog.show()
 
-        val buttonAddCar = customView.findViewById<Button>(R.id.saveCar)
+
+        autoComplete.onItemClickListener = AdapterView.OnItemClickListener{
+                adapterView, view, i, l ->
+
+            val selectedBodyType = adapterView.getItemAtPosition(i)
+        }
+
 
         buttonAddCar.setOnClickListener{
 
             val brand = customView.findViewById<EditText>(R.id.brandEditText).text.toString()
             val model = customView.findViewById<EditText>(R.id.modelEditText).text.toString()
+            val bodyType = autoComplete.text.toString()
             val mileage = customView.findViewById<EditText>(R.id.mileageEditText).text.toString()
             val createYear = customView.findViewById<EditText>(R.id.createYearEditText).text.toString()
             val vin = customView.findViewById<EditText>(R.id.vinEditText).text.toString()
             val fuelType = customView.findViewById<EditText>(R.id.fuelTypeEditText).text.toString()
 
-            val car  = Car(null, brand, model, "sedan", createYear.toInt(), mileage.toInt(), vin, fuelType, "-", true)
+            val car  = Car(null, brand, model, bodyType, createYear.toInt(), mileage.toInt(), vin, fuelType, "-", true)
             Log.i("info", car.id.toString())
             carViewModel.insert(car){}
             //unSetSelectedCars()
         }
 
-        val buttonExit = customView.findViewById<Button>(R.id.exitCarMenu)
+
         buttonExit?.setOnClickListener{
             dialog.cancel()
         }

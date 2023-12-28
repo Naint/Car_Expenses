@@ -8,6 +8,7 @@ import com.example.carexpenses.screens.history.HistoryFragment
 import com.example.carexpenses.fragments.MainFragment
 import com.example.carexpenses.fragments.MapFragment
 import com.example.carexpenses.fragments.OtherFragment
+import com.example.carexpenses.screens.TimeSheetFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.main -> replaceFragment(MainFragment())
                 R.id.history -> replaceFragment(HistoryFragment())
-                R.id.map -> replaceFragment(MapFragment())
+                R.id.map -> replaceFragment(TimeSheetFragment())
                 R.id.other -> replaceFragment(OtherFragment())
                 else -> {
 
