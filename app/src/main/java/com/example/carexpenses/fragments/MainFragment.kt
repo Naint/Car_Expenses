@@ -279,6 +279,8 @@ class MainFragment : Fragment() {
         val customView = LayoutInflater.from(requireContext()).inflate(R.layout.add_car_menu, null)
         builder.setView(customView)
 
+
+
         val buttonAddCar = customView.findViewById<Button>(R.id.saveCar)
         val buttonExit = customView.findViewById<Button>(R.id.exitCarMenu)
 

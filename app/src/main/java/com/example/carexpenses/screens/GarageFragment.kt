@@ -62,7 +62,7 @@ class GarageFragment : Fragment() {
 
     private fun init(){
         recyclerView = binding.rvGarage
-        adapter = GarageAdapter(carViewModel)
+        adapter = GarageAdapter(carViewModel, requireContext(), viewLifecycleOwner)
         recyclerView.adapter = adapter
         carViewModel.getAllCars().observe(viewLifecycleOwner){
             adapter.setList(it)

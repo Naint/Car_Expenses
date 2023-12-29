@@ -3,21 +3,26 @@ package com.example.carexpenses.adapter
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
+import android.icu.text.Transliterator.Position
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carexpenses.R
 import com.example.carexpenses.data.Car
+import com.example.carexpenses.databinding.FragmentMainBinding
 import com.example.carexpenses.screens.main.CarViewModel
 import com.example.carexpenses.screens.main.ExpenseViewModel
 
-class GarageAdapter(carViewModel: CarViewModel): RecyclerView.Adapter<GarageAdapter.GarageViewHolder>() {
+class GarageAdapter(carViewModel: CarViewModel, context: Context, owner: LifecycleOwner): RecyclerView.Adapter<GarageAdapter.GarageViewHolder>() {
 
     private var carList = emptyList<Car>()
     private var carViewModel = carViewModel
+    private var context = context
+    private var owner = owner
 
     class GarageViewHolder(view: View): RecyclerView.ViewHolder(view)
 
@@ -32,19 +37,15 @@ class GarageAdapter(carViewModel: CarViewModel): RecyclerView.Adapter<GarageAdap
         holder.itemView.findViewById<TextView>(R.id.tv_brand).text = carList[position].brand
         holder.itemView.findViewById<TextView>(R.id.tv_model).text = carList[position].model
         holder.itemView.findViewById<Button>(R.id.btn_edit).setOnClickListener{
-            carViewModel.insert(Car(null, "test", "test", "test", 2020, 2020, "fk7", "s", "s", false)){}
+            showEditCarDialog(carViewModel, context, position)
+            //carViewModel.insert(Car(null, "test", "test", "test", 2020, 2020, "fk7", "s", "s", false)){}
+
         }
     }
 
     override fun getItemCount(): Int {
         return carList.size
     }
-
-    private fun setChangedInDb(carViewModel: CarViewModel){
-
-
-    }
-
 
 
     @SuppressLint("NotifyDataSetChanged")
@@ -53,7 +54,9 @@ class GarageAdapter(carViewModel: CarViewModel): RecyclerView.Adapter<GarageAdap
         notifyDataSetChanged()
     }
 
-    private fun showAddCarDialog(carViewModel: CarViewModel, context: Context){
+
+    //Переработать через ViewBinding
+    private fun showEditCarDialog(carViewModel: CarViewModel, context: Context, position: Int){
         val builder = AlertDialog.Builder(context)
         val customView = LayoutInflater.from(context).inflate(R.layout.add_car_menu, null)
         builder.setView(customView)
@@ -69,6 +72,29 @@ class GarageAdapter(carViewModel: CarViewModel): RecyclerView.Adapter<GarageAdap
         val dialog = builder.create()
         dialog.show()
 
+        val brandTextView = customView.findViewById<EditText>(R.id.brandEditText)
+        val modelTextView = customView.findViewById<EditText>(R.id.modelEditText)
+        val bodyTypeTextView = autoComplete
+        val mileageTextView = customView.findViewById<EditText>(R.id.mileageEditText)
+        val createYearTextView = customView.findViewById<EditText>(R.id.createYearEditText)
+        val vinTextView = customView.findViewById<EditText>(R.id.vinEditText)
+        val fuelTypeTextView = customView.findViewById<EditText>(R.id.fuelTypeEditText)
+
+        try{
+            carViewModel.getAllCars().observe(owner){
+                brandTextView.setText(it[position].brand)
+                modelTextView.setText(it[position].model)
+                bodyTypeTextView.setText(it[position].bodyType)
+                createYearTextView.setText(it[position].createYear.toString())
+                mileageTextView.setText(it[position].mileage.toString())
+                vinTextView.setText(it[position].vin)
+            }
+        }
+        catch (e: java.lang.Exception){
+
+        }
+
+
 
         autoComplete.onItemClickListener = AdapterView.OnItemClickListener{
                 adapterView, view, i, l ->
@@ -79,13 +105,13 @@ class GarageAdapter(carViewModel: CarViewModel): RecyclerView.Adapter<GarageAdap
 
         buttonAddCar.setOnClickListener{
 
-            val brand = customView.findViewById<EditText>(R.id.brandEditText).text.toString()
-            val model = customView.findViewById<EditText>(R.id.modelEditText).text.toString()
-            val bodyType = autoComplete.text.toString()
-            val mileage = customView.findViewById<EditText>(R.id.mileageEditText).text.toString()
-            val createYear = customView.findViewById<EditText>(R.id.createYearEditText).text.toString()
-            val vin = customView.findViewById<EditText>(R.id.vinEditText).text.toString()
-            val fuelType = customView.findViewById<EditText>(R.id.fuelTypeEditText).text.toString()
+            val brand = brandTextView.text.toString()
+            val model = modelTextView.text.toString()
+            val bodyType = bodyTypeTextView.text.toString()
+            val mileage = mileageTextView.text.toString()
+            val createYear = createYearTextView.text.toString()
+            val vin = vinTextView.text.toString()
+            val fuelType = fuelTypeTextView.text.toString()
 
             val car  = Car(null, brand, model, bodyType, createYear.toInt(), mileage.toInt(), vin, fuelType, "-", false)
 
