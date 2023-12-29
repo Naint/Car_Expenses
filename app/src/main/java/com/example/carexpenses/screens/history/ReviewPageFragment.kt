@@ -133,7 +133,7 @@ class ReviewPageFragment : Fragment() {
                 entries.add(BarEntry(i.toFloat(), listCostMonth[i-1].toFloat()))
             }
 
-            barChart.setBackgroundColor(Color.parseColor("#524F9D"))
+            barChart.setBackgroundColor(Color.parseColor("#F0E6FF"))
             xAxis.setDrawAxisLine(false);
             xAxis.setDrawGridLines(false);
             xAxis.setDrawLabels(false)
@@ -147,10 +147,10 @@ class ReviewPageFragment : Fragment() {
             axisLeftY.setDrawLabels(false)
 
             val barDataSet = BarDataSet(entries, "")
-            barDataSet.color = Color.parseColor("#E6D4FF")
+            barDataSet.color = Color.parseColor("#9769FF")
 
             val data = BarData(barDataSet)
-            data.setValueTextColor(Color.WHITE)
+            data.setValueTextColor(Color.BLACK)
             data.setValueTextSize(10f)
 
 

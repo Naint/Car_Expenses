@@ -38,9 +38,11 @@ class GarageAdapter(carViewModel: CarViewModel, context: Context, owner: Lifecyc
         holder.itemView.findViewById<TextView>(R.id.tv_model).text = carList[position].model
         holder.itemView.findViewById<Button>(R.id.btn_edit).setOnClickListener{
             showEditCarDialog(carViewModel, context, position)
-            //carViewModel.insert(Car(null, "test", "test", "test", 2020, 2020, "fk7", "s", "s", false)){}
-
+            notifyDataSetChanged()
+            Log.i("info", "openDialog")
         }
+
+
     }
 
     override fun getItemCount(): Int {
@@ -102,7 +104,6 @@ class GarageAdapter(carViewModel: CarViewModel, context: Context, owner: Lifecyc
             val selectedBodyType = adapterView.getItemAtPosition(i)
         }
 
-
         buttonAddCar.setOnClickListener{
 
             val brand = brandTextView.text.toString()
@@ -113,9 +114,8 @@ class GarageAdapter(carViewModel: CarViewModel, context: Context, owner: Lifecyc
             val vin = vinTextView.text.toString()
             val fuelType = fuelTypeTextView.text.toString()
 
-            val car  = Car(null, brand, model, bodyType, createYear.toInt(), mileage.toInt(), vin, fuelType, "-", false)
-
-            carViewModel.insert(car){}
+            val car  = Car(carList[position].id, brand, model, bodyType, createYear.toInt(), mileage.toInt(), vin, fuelType, "-", false)
+            carViewModel.update(car){}
         }
 
 
@@ -123,6 +123,15 @@ class GarageAdapter(carViewModel: CarViewModel, context: Context, owner: Lifecyc
             dialog.cancel()
         }
 
+    }
+
+    private fun addCarInDb(customView: View){
+        val brandTextView = customView.findViewById<EditText>(R.id.brandEditText)
+        val modelTextView = customView.findViewById<EditText>(R.id.modelEditText)
+        val mileageTextView = customView.findViewById<EditText>(R.id.mileageEditText)
+        val createYearTextView = customView.findViewById<EditText>(R.id.createYearEditText)
+        val vinTextView = customView.findViewById<EditText>(R.id.vinEditText)
+        val fuelTypeTextView = customView.findViewById<EditText>(R.id.fuelTypeEditText)
     }
 
 

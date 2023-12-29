@@ -112,7 +112,7 @@ class FuelPageFragment : Fragment() {
                 entries.add(BarEntry(i.toFloat(), listCostMonth[i-1].toFloat()))
             }
 
-            barChart.setBackgroundColor(Color.parseColor("#524F9D"))
+            barChart.setBackgroundColor(Color.parseColor("#E4D8FF"))
             xAxis.setDrawAxisLine(false);
             xAxis.setDrawGridLines(false);
             xAxis.setDrawLabels(false)
@@ -126,10 +126,10 @@ class FuelPageFragment : Fragment() {
             axisLeftY.setDrawLabels(false)
 
             val barDataSet = BarDataSet(entries, "")
-            barDataSet.color = Color.parseColor("#E6D4FF")
+            barDataSet.color = Color.parseColor("#2C1C85")
 
             val data = BarData(barDataSet)
-            data.setValueTextColor(Color.WHITE)
+            data.setValueTextColor(Color.BLACK)
             data.setValueTextSize(10f)
 
 
@@ -191,7 +191,7 @@ class FuelPageFragment : Fragment() {
                 entries.add(BarEntry(i.toFloat(), listCostMonth[i-1].toFloat()))
             }
 
-            barChart.setBackgroundColor(Color.parseColor("#524F9D"))
+            barChart.setBackgroundColor(Color.parseColor("#E4D8FF"))
             xAxis.setDrawAxisLine(false);
             xAxis.setDrawGridLines(false);
             xAxis.setDrawLabels(false)
@@ -205,10 +205,10 @@ class FuelPageFragment : Fragment() {
             axisLeftY.setDrawLabels(false)
 
             val barDataSet = BarDataSet(entries, "")
-            barDataSet.color = Color.parseColor("#E6D4FF")
+            barDataSet.color = Color.parseColor("#5D2DA5")
 
             val data = BarData(barDataSet)
-            data.setValueTextColor(Color.WHITE)
+            data.setValueTextColor(Color.BLACK)
             data.setValueTextSize(10f)
 
 
