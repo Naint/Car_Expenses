@@ -3,13 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mainBackground"
-    >
+    android:background="@color/mainBackground">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +24,8 @@
                 android:text="Штраф"
                 android:textColor="@color/white"
                 android:fontFamily="@font/days_one"
-                android:textSize="30sp" />
+                android:textSize="30sp"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -44,7 +43,7 @@
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/edit_text_style"
                 style="@style/editTextAddMenuStyle"
-                android:hint="@string/date" />
+                android:hint="@string/date"/>
 
             <EditText
                 android:id="@+id/mileageInfoTicket"
@@ -52,7 +51,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_style"
                 style="@style/editTextAddMenuStyle"
-                android:hint="@string/mileage" />
+                android:hint="@string/mileage"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -83,7 +83,8 @@
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/edit_text_style"
                 style="@style/editTextAddMenuStyle"
-                android:hint="@string/comment" />
+                android:hint="@string/comment"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -105,11 +106,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/save"
-                android:backgroundTint="#524F9D"
+                android:backgroundTint="#524F9D"/>
 
-                />
         </LinearLayout>
-
 
     </LinearLayout>
 

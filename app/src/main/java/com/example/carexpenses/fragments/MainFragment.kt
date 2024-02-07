@@ -14,9 +14,7 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
 import com.example.carexpenses.R
 import com.example.carexpenses.data.Car
 import com.example.carexpenses.data.Expense
@@ -27,14 +25,13 @@ import com.example.carexpenses.screens.main.CarViewModel
 import com.example.carexpenses.screens.main.ExpenseViewModel
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.math.exp
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 
 class MainFragment : Fragment() {
-    // TODO: Rename and change types of parameters
+
     private var param1: String? = null
     private var param2: String? = null
 
@@ -114,12 +111,6 @@ class MainFragment : Fragment() {
         }
     }
 
-
-
-
-
-
-
     private fun setInfoUpperPanel(selectedCar : Car){
         binding.carModelTextView.text = "${selectedCar.brand} ${selectedCar.model}"
         binding.mileageTextView.text = "Пробег: ${selectedCar.mileage} км"
@@ -127,8 +118,6 @@ class MainFragment : Fragment() {
         //binding.bankCapacityTextView.text = "Год выпуска: ${selectedCar.createYear}"
 
     }
-
-
 
     private fun onClickListeners(){
         binding.washCardView.setOnClickListener{
@@ -147,12 +136,18 @@ class MainFragment : Fragment() {
             showAddTicketDialog()
         }
 
+        binding.otherCardView.setOnClickListener{
+            showAddOtherDialog()
+        }
+
+        binding.tuningCardView.setOnClickListener{
+            showAddTuningDialog()
+        }
+
         binding.addCarButton.setOnClickListener{
             showAddCarDialog()
         }
     }
-
-
 
     private fun showRefillDialog(){
         val builder = AlertDialog.Builder(requireContext())
@@ -216,8 +211,6 @@ class MainFragment : Fragment() {
 
     }
 
-
-
     private fun showAddParkingDialog(){
         val builder = AlertDialog.Builder(requireContext())
         val customView = LayoutInflater.from(requireContext()).inflate(R.layout.add_parking_menu, null)
@@ -265,6 +258,62 @@ class MainFragment : Fragment() {
         buttonSave?.setOnClickListener{
 
             val typeExpense = "Штраф"
+            val mileage = customView.findViewById<EditText>(R.id.mileageInfoTicket).text.toString().toInt()
+            val date = customView.findViewById<EditText>(R.id.dateInfoTicket).text.toString()
+            val cost = customView.findViewById<EditText>(R.id.costInfoTicket).text.toString().toInt()
+            val comment = customView.findViewById<EditText>(R.id.commentInfoTicket).text.toString()
+            expenseViewModel.insert(Expense(null, typeExpense, mileage, date, cost, comment, selectedCarId)){}
+        }
+
+    }
+
+    private fun showAddOtherDialog(){
+        val builder = AlertDialog.Builder(requireContext())
+        val customView = LayoutInflater.from(requireContext()).inflate(R.layout.add_ticket_menu, null)
+        builder.setView(customView)
+
+        val dialog = builder.create()
+        dialog.show()
+
+        val ed = customView.findViewById<EditText>(R.id.dateInfoTicket)
+        ed.transformIntoDatePicker(requireContext(),"MM/dd/yyyy")
+
+        val buttonExit = customView.findViewById<Button>(R.id.exitTicketDialog)
+        val buttonSave = customView.findViewById<Button>(R.id.saveTicketInfo)
+        buttonExit?.setOnClickListener{
+            dialog.cancel()
+        }
+        buttonSave?.setOnClickListener{
+
+            val typeExpense = "Другое"
+            val mileage = customView.findViewById<EditText>(R.id.mileageInfoTicket).text.toString().toInt()
+            val date = customView.findViewById<EditText>(R.id.dateInfoTicket).text.toString()
+            val cost = customView.findViewById<EditText>(R.id.costInfoTicket).text.toString().toInt()
+            val comment = customView.findViewById<EditText>(R.id.commentInfoTicket).text.toString()
+            expenseViewModel.insert(Expense(null, typeExpense, mileage, date, cost, comment, selectedCarId)){}
+        }
+
+    }
+
+    private fun showAddTuningDialog(){
+        val builder = AlertDialog.Builder(requireContext())
+        val customView = LayoutInflater.from(requireContext()).inflate(R.layout.add_ticket_menu, null)
+        builder.setView(customView)
+
+        val dialog = builder.create()
+        dialog.show()
+
+        val ed = customView.findViewById<EditText>(R.id.dateInfoTicket)
+        ed.transformIntoDatePicker(requireContext(),"MM/dd/yyyy")
+
+        val buttonExit = customView.findViewById<Button>(R.id.exitTicketDialog)
+        val buttonSave = customView.findViewById<Button>(R.id.saveTicketInfo)
+        buttonExit?.setOnClickListener{
+            dialog.cancel()
+        }
+        buttonSave?.setOnClickListener{
+
+            val typeExpense = "Тюнинг"
             val mileage = customView.findViewById<EditText>(R.id.mileageInfoTicket).text.toString().toInt()
             val date = customView.findViewById<EditText>(R.id.dateInfoTicket).text.toString()
             val cost = customView.findViewById<EditText>(R.id.costInfoTicket).text.toString().toInt()
@@ -324,6 +373,7 @@ class MainFragment : Fragment() {
 
     }
 
+
     fun EditText.transformIntoDatePicker(context: Context, format: String, maxDate: Date? = null) {
         isFocusableInTouchMode = false
         isClickable = true
@@ -361,7 +411,4 @@ class MainFragment : Fragment() {
                 }
             }
     }
-
-
-
 }

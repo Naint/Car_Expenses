@@ -6,13 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.carexpenses.R
-import com.example.carexpenses.data.Car
 import com.example.carexpenses.databinding.FragmentFuelPageBinding
-import com.example.carexpenses.databinding.FragmentReviewPageBinding
-import com.example.carexpenses.screens.main.ExpenseViewModel
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
@@ -59,7 +54,6 @@ class FuelPageFragment : Fragment() {
         setBarChart()
         setLiterChart()
         getFuels()
-
     }
 
     private fun setBarChart() {

@@ -20,7 +20,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_gravity="center"
-            android:src="@drawable/sedan" />
+            android:src="@drawable/sedan"/>
 
         <TextView
             android:id="@+id/tv_brand"
@@ -30,7 +30,7 @@
             android:fontFamily="@font/days_one"
             android:textColor="@color/black"
             android:text="Brand"
-            android:textSize="18sp" />
+            android:textSize="18sp"/>
 
         <TextView
             android:id="@+id/tv_model"
@@ -40,20 +40,19 @@
             android:fontFamily="@font/days_one"
             android:text="Model"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"/>
 
         <Button
             android:id="@+id/btn_select"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Выбрать"
+            android:text="@string/choose"
             android:textSize="12sp"
             android:fontFamily="@font/days_one"
             android:backgroundTint="#3E0A68"
             android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
-            />
+            android:layout_marginLeft="15dp"/>
 
         <Button
             android:id="@+id/btn_edit"
@@ -63,11 +62,9 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
             android:fontFamily="@font/days_one"
-            android:text="Изменить"
+            android:text="@string/edit"
             android:backgroundTint="#9172B1"
-            android:textSize="12sp"
-
-            />
+            android:textSize="12sp"/>
 
         <Button
             android:id="@+id/btn_delete"
@@ -77,11 +74,9 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
             android:fontFamily="@font/days_one"
-            android:text="Удалить"
+            android:text="@string/delete"
             android:backgroundTint="#000000"
-            android:textSize="12sp"
-
-            />
+            android:textSize="12sp"/>
 
     </LinearLayout>
 

@@ -3,13 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mainBackground"
-    >
+    android:background="@color/mainBackground">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,10 +21,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Парковка"
+                android:text="@string/parking"
                 android:textColor="@color/white"
                 android:fontFamily="@font/days_one"
-                android:textSize="30sp" />
+                android:textSize="30sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -44,7 +42,7 @@
                 android:layout_marginRight="60dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/edit_text_style"
-                android:hint="@string/date" />
+                android:hint="@string/date"/>
 
             <EditText
                 android:id="@+id/mileageInfoParking"
@@ -53,7 +51,7 @@
                 android:background="@drawable/edit_text_style"
                 style="@style/editTextAddMenuStyle"
                 android:inputType="number"
-                android:hint="@string/mileage" />
+                android:hint="@string/mileage"/>
         </LinearLayout>
 
         <LinearLayout
@@ -70,8 +68,8 @@
                 android:background="@drawable/edit_text_style"
                 android:hint="@string/price"
                 android:inputType="number"
-                style="@style/editTextAddMenuStyle"
-                />
+                style="@style/editTextAddMenuStyle"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -87,6 +85,7 @@
                 android:background="@drawable/edit_text_style"
                 android:hint="@string/comment"
                 style="@style/editTextAddMenuStyle"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -108,11 +107,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#524F9D"
-                android:text="@string/save"
+                android:text="@string/save"/>
 
-                />
         </LinearLayout>
-
 
     </LinearLayout>
 

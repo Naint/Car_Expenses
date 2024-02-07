@@ -12,8 +12,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <!--График "Потрачено на топливо"-->
             <androidx.cardview.widget.CardView
@@ -28,14 +27,12 @@
                 android:layout_marginLeft="10dp"
                 android:background="#524F9D"
                 android:backgroundTint="#524F9D"
-                app:cardCornerRadius="12dp"
-                >
+                app:cardCornerRadius="12dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/sumExpense"
@@ -44,34 +41,28 @@
                         android:text="Потрачено на топливо \n 15500₽"
                         android:layout_marginBottom="10dp"
                         android:textColor="@color/white"
-                        android:layout_marginLeft="5dp"
-                        />
+                        android:layout_marginLeft="5dp"/>
 
 
                     <com.github.mikephil.charting.charts.BarChart
                         android:id="@+id/barChart"
                         android:layout_width="350dp"
                         android:layout_height="250dp"
-
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
                     </com.github.mikephil.charting.charts.BarChart>
 
-
-
-
-
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
             <!--График "Топливо залито"-->
             <androidx.cardview.widget.CardView
                 android:id="@+id/litresCardView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:background="#524F9D"
                 android:backgroundTint="#524F9D"
                 app:cardCornerRadius="12dp"
@@ -86,30 +77,28 @@
                     android:orientation="vertical">
 
                     <TextView
-
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_marginBottom="10dp"
                         android:text="Топлива залито \n 214 л"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"/>
 
 
                     <com.github.mikephil.charting.charts.BarChart
                         android:id="@+id/chartLiters"
                         android:layout_width="350dp"
                         android:layout_height="250dp"
-
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
                     </com.github.mikephil.charting.charts.BarChart>
 
-
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
             <!--Плашка "Число заправок"-->
             <androidx.cardview.widget.CardView
                 android:id="@+id/countRefillCardView"
@@ -131,19 +120,15 @@
                     android:layout_marginBottom="10dp">
 
                     <TextView
-
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="5dp"
-
                         android:layout_marginRight="90dp"
                         android:fontFamily="@font/days_one"
-
                         android:text="Число заправок"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
-
 
                     <TextView
                         android:id="@+id/amountRefill"
@@ -158,6 +143,7 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
             <!--Плашка "Средние траты за месяц"-->
             <androidx.cardview.widget.CardView
 
@@ -185,17 +171,13 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="5dp"
-
                         android:layout_marginRight="90dp"
                         android:fontFamily="@font/days_one"
-
                         android:text="Средние траты за месяц"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
 
-
                     <TextView
-
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -208,12 +190,8 @@
 
             </androidx.cardview.widget.CardView>
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     </ScrollView>
-
-
 
 </FrameLayout>

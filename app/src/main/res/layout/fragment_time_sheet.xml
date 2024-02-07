@@ -5,13 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".screens.TimeSheetFragment"
-    android:background="@color/mainBackground"
-    >
+    android:background="@color/mainBackground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
         <TextView
             android:id="@+id/timeSheetTextView"
@@ -40,22 +38,16 @@
                 android:fontFamily="@font/days_one"
                 android:textColor="@color/white"
                 android:layout_marginLeft="10dp"
-                android:layout_alignParentLeft="true"
-                />
+                android:layout_alignParentLeft="true"/>
+
             <ImageButton
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/add_add"
-
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp"
-                />
-
-
+                android:layout_marginRight="10dp"/>
 
         </RelativeLayout>
-
-        
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

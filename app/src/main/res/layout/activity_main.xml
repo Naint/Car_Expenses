@@ -6,21 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     tools:menu="@menu/nav_menu"
-    android:background="#0B0718"
-    >
-
+    android:background="#0B0718">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frame_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -34,9 +29,7 @@
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:itemTextAppearanceActive="@font/days_one"
-        app:itemTextAppearanceInactive="@font/days_one"
-        >
-
+        app:itemTextAppearanceInactive="@font/days_one">
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

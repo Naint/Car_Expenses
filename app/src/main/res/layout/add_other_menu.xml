@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/add_wash_menu"
     android:background="@color/mainBackground">
 
     <LinearLayout
-        android:id="@+id/washMenuLay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="vertical">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -24,37 +22,37 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/days_one"
-                android:text="@string/wash"
-                android:layout_marginTop="10dp"
+                android:text="@string/other"
                 android:textColor="@color/white"
-                android:textSize="25sp"/>
+                android:textSize="30sp"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/dateInfoWash"
+                android:id="@+id/dateInfoParking"
+                style="@style/editTextAddMenuStyle"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginRight="60dp"
                 android:layout_marginBottom="15dp"
-                style="@style/editTextAddMenuStyle"
                 android:background="@drawable/edit_text_style"
-                android:hint="@string/date" />
+                android:hint="@string/date"/>
 
             <EditText
-                android:id="@+id/mileageInfoWash"
+                android:id="@+id/mileageInfoParking"
+                style="@style/editTextAddMenuStyle"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_style"
-                style="@style/editTextAddMenuStyle"
-                android:hint="@string/mileage"/>
+                android:hint="@string/mileage"
+                android:inputType="number"/>
 
         </LinearLayout>
 
@@ -64,14 +62,15 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/costInfoWash"
+                android:id="@+id/costInfoParking"
+                style="@style/editTextAddMenuStyle"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/edit_text_style"
                 android:layout_marginBottom="15dp"
+                android:background="@drawable/edit_text_style"
                 android:hint="@string/price"
-                style="@style/editTextAddMenuStyle"/>
+                android:inputType="number"/>
 
         </LinearLayout>
 
@@ -81,40 +80,36 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/commentInfoWash"
+                android:id="@+id/commentInfoParking"
+                style="@style/editTextAddMenuStyle"
                 android:layout_width="300dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/edit_text_style"
-                android:hint="@string/comment"
-                style="@style/editTextAddMenuStyle"/>
+                android:hint="@string/comment"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <Button
-                android:id="@+id/exitWashDialog"
+                android:id="@+id/exitParkingDialog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/exit"
-                android:textSize="12sp"
-                android:fontFamily="@font/days_one"
                 android:layout_marginRight="80dp"
-                android:backgroundTint="#524F9D"/>
+                android:backgroundTint="#524F9D"
+                android:text="@string/exit"/>
 
             <Button
-                android:id="@+id/saveWashInfo"
+                android:id="@+id/saveParkingInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/save"
-                android:textSize="12sp"
-                android:fontFamily="@font/days_one"
-                android:backgroundTint="#524F9D"/>
+                android:backgroundTint="#524F9D"
+                android:text="@string/save"/>
 
         </LinearLayout>
 
