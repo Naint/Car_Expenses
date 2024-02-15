@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.carexpenses.databinding.ActivityMainBinding
 import com.example.carexpenses.screens.history.HistoryFragment
-import com.example.carexpenses.fragments.MainFragment
+import com.example.carexpenses.screens.main.MainFragment
 import com.example.carexpenses.fragments.OtherFragment
 import com.example.carexpenses.screens.TimeSheetFragment
 

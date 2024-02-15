@@ -1,4 +1,4 @@
-package com.example.carexpenses.fragments
+package com.example.carexpenses.screens.main
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
@@ -21,8 +21,6 @@ import com.example.carexpenses.data.Expense
 import com.example.carexpenses.data.Refill
 import com.example.carexpenses.databinding.FragmentMainBinding
 import com.example.carexpenses.screens.history.FuelViewModel
-import com.example.carexpenses.screens.main.CarViewModel
-import com.example.carexpenses.screens.main.ExpenseViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -49,8 +47,6 @@ class MainFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
-
     }
 
     override fun onCreateView(
@@ -70,6 +66,7 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         carViewModel.initDataBase()
+        //getSelectedCars()
         //carViewModel.insert(Car(null, "Honda", "Civic", 2020, 2000, "FK100", "100", "-", true)){}
         getCars()
         onClickListeners()
@@ -85,10 +82,13 @@ class MainFragment : Fragment() {
 
     }
 
-
-
-
-
+    private fun getSelectedCars(){
+        carViewModel.getCurrentCars().observe(viewLifecycleOwner) {listCar ->
+            for(i in 0..listCar.size - 1){
+                //carViewModel.update(){}
+            }
+        }
+    }
 
     //Переписать по возможности
     private fun getCars(){
@@ -98,7 +98,6 @@ class MainFragment : Fragment() {
             if (listCar.isEmpty()){
                 showAddCarDialog()
             }
-
 
             for (i in listCar.indices){
 
@@ -114,9 +113,6 @@ class MainFragment : Fragment() {
     private fun setInfoUpperPanel(selectedCar : Car){
         binding.carModelTextView.text = "${selectedCar.brand} ${selectedCar.model}"
         binding.mileageTextView.text = "Пробег: ${selectedCar.mileage} км"
-        //binding.typeFuelTextView.text = "Тип топлива: ${selectedCar.fuelType}"
-        //binding.bankCapacityTextView.text = "Год выпуска: ${selectedCar.createYear}"
-
     }
 
     private fun onClickListeners(){
@@ -327,8 +323,6 @@ class MainFragment : Fragment() {
         val builder = AlertDialog.Builder(requireContext())
         val customView = LayoutInflater.from(requireContext()).inflate(R.layout.add_car_menu, null)
         builder.setView(customView)
-
-
 
         val buttonAddCar = customView.findViewById<Button>(R.id.saveCar)
         val buttonExit = customView.findViewById<Button>(R.id.exitCarMenu)
