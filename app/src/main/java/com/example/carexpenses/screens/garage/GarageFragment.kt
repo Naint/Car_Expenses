@@ -1,8 +1,7 @@
-package com.example.carexpenses.screens
+package com.example.carexpenses.screens.garage
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,14 +13,11 @@ import com.example.carexpenses.R
 import com.example.carexpenses.adapter.GarageAdapter
 import com.example.carexpenses.data.Car
 import com.example.carexpenses.databinding.FragmentGarageBinding
-import com.example.carexpenses.databinding.FragmentMainBinding
 import com.example.carexpenses.screens.main.CarViewModel
 
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
-
-
 
 
 class GarageFragment : Fragment() {

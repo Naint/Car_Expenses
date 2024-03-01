@@ -64,33 +64,18 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        init()
+    }
 
+    private fun init(){
         carViewModel.initDataBase()
-        //getSelectedCars()
-        //carViewModel.insert(Car(null, "Honda", "Civic", 2020, 2000, "FK100", "100", "-", true)){}
-        getCars()
-        onClickListeners()
         expenseViewModel.initTable()
         fuelViewModel.initTable()
-        //getSelectedCarId()
-
-
-        /*fuelViewModel.insert(Refill(null, "06/12/2023", 300,1000.0, "s", 3, 23.5, "asda", 1)){}
-        fuelViewModel.insert(Refill(null, "04/12/2023", 300,500.0, "s", 3, 23.5, "asda", 1)){}
-        fuelViewModel.insert(Refill(null, "05/12/2023", 300,500.0, "s", 3, 23.5, "asda", 1)){}*/
-        //carViewModel.update(Car(14, "Lada", "Granta",2010, 20, "fk", "100", "s", false)){}
-
+        getCars()
+        //setCarBodyIcon(Car(-1, "-", "-", "Кроссовер",-1, -1, "-", "-", "-", false))
+        onClickListeners()
     }
 
-    private fun getSelectedCars(){
-        carViewModel.getCurrentCars().observe(viewLifecycleOwner) {listCar ->
-            for(i in 0..listCar.size - 1){
-                //carViewModel.update(){}
-            }
-        }
-    }
-
-    //Переписать по возможности
     private fun getCars(){
         var selectedCar = Car(-1, "-", "-", "sedan",-1, -1, "-", "-", "-", false)
         carViewModel.getAllCars().observe(viewLifecycleOwner) {listCar ->
@@ -100,19 +85,30 @@ class MainFragment : Fragment() {
             }
 
             for (i in listCar.indices){
-
                 if(listCar[i].selectedCar){
                     selectedCar = listCar[i]
                 }
-                //Log.i("info", listCar[i].id.toString())
             }
             setInfoUpperPanel(selectedCar)
+            setCarBodyIcon(selectedCar)
         }
     }
 
     private fun setInfoUpperPanel(selectedCar : Car){
         binding.carModelTextView.text = "${selectedCar.brand} ${selectedCar.model}"
         binding.mileageTextView.text = "Пробег: ${selectedCar.mileage} км"
+    }
+
+    private fun setCarBodyIcon(car: Car){
+
+        val carImagesMap = mutableMapOf(
+            "Седан" to R.drawable.sedan,
+            "Кроссовер" to R.drawable.crossover,
+            "Хетчбек" to R.drawable.hatchback,
+            "Внедорожник" to R.drawable.jeep)
+
+        carImagesMap[car.bodyType]?.let { binding.car.setImageResource(it) }
+
     }
 
     private fun onClickListeners(){

@@ -3,7 +3,6 @@ package com.example.carexpenses.adapter
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
-import android.icu.text.Transliterator.Position
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,9 +12,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carexpenses.R
 import com.example.carexpenses.data.Car
-import com.example.carexpenses.databinding.FragmentMainBinding
 import com.example.carexpenses.screens.main.CarViewModel
-import com.example.carexpenses.screens.main.ExpenseViewModel
 
 class GarageAdapter(carViewModel: CarViewModel, context: Context, owner: LifecycleOwner): RecyclerView.Adapter<GarageAdapter.GarageViewHolder>() {
 
@@ -25,8 +22,6 @@ class GarageAdapter(carViewModel: CarViewModel, context: Context, owner: Lifecyc
     private var owner = owner
 
     class GarageViewHolder(view: View): RecyclerView.ViewHolder(view)
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GarageViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_garage_layout, parent, false)
@@ -41,8 +36,6 @@ class GarageAdapter(carViewModel: CarViewModel, context: Context, owner: Lifecyc
             notifyDataSetChanged()
             Log.i("info", "openDialog")
         }
-
-
     }
 
     override fun getItemCount(): Int {
@@ -66,13 +59,14 @@ class GarageAdapter(carViewModel: CarViewModel, context: Context, owner: Lifecyc
         val buttonAddCar = customView.findViewById<Button>(R.id.saveCar)
         val buttonExit = customView.findViewById<Button>(R.id.exitCarMenu)
 
-        val items = listOf<String>("Седан", "Хетчбек", "Кроссовер", "Внедорожник")
+        val items = listOf("Седан", "Хетчбек", "Кроссовер", "Внедорожник")
         val autoComplete : AutoCompleteTextView = customView.findViewById(R.id.autoCompleteBodyType)
         val adapter = ArrayAdapter(context, R.layout.list_body_type, items)
         autoComplete.setAdapter(adapter)
 
         val dialog = builder.create()
         dialog.show()
+
 
         val brandTextView = customView.findViewById<EditText>(R.id.brandEditText)
         val modelTextView = customView.findViewById<EditText>(R.id.modelEditText)
@@ -82,11 +76,13 @@ class GarageAdapter(carViewModel: CarViewModel, context: Context, owner: Lifecyc
         val vinTextView = customView.findViewById<EditText>(R.id.vinEditText)
         val fuelTypeTextView = customView.findViewById<EditText>(R.id.fuelTypeEditText)
 
+
+
         try{
             carViewModel.getAllCars().observe(owner){
                 brandTextView.setText(it[position].brand)
                 modelTextView.setText(it[position].model)
-                bodyTypeTextView.setText(it[position].bodyType)
+                //bodyTypeTextView.setText(it[position].bodyType)
                 createYearTextView.setText(it[position].createYear.toString())
                 mileageTextView.setText(it[position].mileage.toString())
                 vinTextView.setText(it[position].vin)
@@ -96,13 +92,14 @@ class GarageAdapter(carViewModel: CarViewModel, context: Context, owner: Lifecyc
 
         }
 
-
-
         autoComplete.onItemClickListener = AdapterView.OnItemClickListener{
                 adapterView, view, i, l ->
 
             val selectedBodyType = adapterView.getItemAtPosition(i)
         }
+
+
+
 
         buttonAddCar.setOnClickListener{
 
@@ -114,7 +111,7 @@ class GarageAdapter(carViewModel: CarViewModel, context: Context, owner: Lifecyc
             val vin = vinTextView.text.toString()
             val fuelType = fuelTypeTextView.text.toString()
 
-            val car  = Car(carList[position].id, brand, model, bodyType, createYear.toInt(), mileage.toInt(), vin, fuelType, "-", false)
+            val car  = Car(carList[position].id, brand, model, bodyType, createYear.toInt(), mileage.toInt(), vin, fuelType, "-", true)
             carViewModel.update(car){}
         }
 
