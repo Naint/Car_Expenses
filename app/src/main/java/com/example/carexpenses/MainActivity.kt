@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.carexpenses.databinding.ActivityMainBinding
+import com.example.carexpenses.screens.ListExpenseFragment
 import com.example.carexpenses.screens.history.HistoryFragment
 import com.example.carexpenses.screens.main.MainFragment
 import com.example.carexpenses.screens.OtherFragment
@@ -19,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         replaceFragment(MainFragment())
-
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.main -> replaceFragment(MainFragment())

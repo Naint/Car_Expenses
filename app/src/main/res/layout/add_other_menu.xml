@@ -35,7 +35,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/dateInfoParking"
+                android:id="@+id/etDateOther"
                 style="@style/editTextAddMenuStyle"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
                 android:hint="@string/date"/>
 
             <EditText
-                android:id="@+id/mileageInfoParking"
+                android:id="@+id/etMileageOther"
                 style="@style/editTextAddMenuStyle"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/costInfoParking"
+                android:id="@+id/etPriceOther"
                 style="@style/editTextAddMenuStyle"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/commentInfoParking"
+                android:id="@+id/etCommentOther"
                 style="@style/editTextAddMenuStyle"
                 android:layout_width="300dp"
                 android:layout_height="100dp"
@@ -97,7 +97,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/exitParkingDialog"
+                android:id="@+id/btnExitOther"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="80dp"
@@ -105,7 +105,7 @@
                 android:text="@string/exit"/>
 
             <Button
-                android:id="@+id/saveParkingInfo"
+                android:id="@+id/btnSaveOther"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#524F9D"

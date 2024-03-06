@@ -44,6 +44,9 @@ class OtherFragment : Fragment() {
         binding.garageCardView.setOnClickListener{
             replaceFragment(GarageFragment())
         }
+        binding.cvListExpense.setOnClickListener{
+            replaceFragment(ListExpenseFragment())
+        }
 
     }
 

@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/days_one"
-                android:text="Тюннинг"
+                android:text="Тюнинг"
                 android:textColor="@color/white"
                 android:textSize="30sp"/>
 
@@ -35,7 +35,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/dateInfoParking"
+                android:id="@+id/etDateTuning"
                 style="@style/editTextAddMenuStyle"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
                 android:hint="@string/date"/>
 
             <EditText
-                android:id="@+id/mileageInfoParking"
+                android:id="@+id/etMileageTuning"
                 style="@style/editTextAddMenuStyle"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/costInfoParking"
+                android:id="@+id/etPriceTuning"
                 style="@style/editTextAddMenuStyle"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/commentInfoParking"
+                android:id="@+id/etCommentTuning"
                 style="@style/editTextAddMenuStyle"
                 android:layout_width="300dp"
                 android:layout_height="100dp"
@@ -94,7 +94,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/exitParkingDialog"
+                android:id="@+id/btnExitTuning"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="80dp"
@@ -102,7 +102,7 @@
                 android:text="@string/exit"/>
 
             <Button
-                android:id="@+id/saveParkingInfo"
+                android:id="@+id/btnSaveTuning"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#524F9D"

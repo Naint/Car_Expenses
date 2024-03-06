@@ -249,7 +249,7 @@ class MainFragment : Fragment() {
         }
         buttonSave?.setOnClickListener{
 
-            val typeExpense = "Штраф"
+            val typeExpense = "Штрафы"
             val mileage = customView.findViewById<EditText>(R.id.mileageInfoTicket).text.toString().toInt()
             val date = customView.findViewById<EditText>(R.id.dateInfoTicket).text.toString()
             val cost = customView.findViewById<EditText>(R.id.costInfoTicket).text.toString().toInt()
@@ -261,27 +261,27 @@ class MainFragment : Fragment() {
 
     private fun showAddOtherDialog(){
         val builder = AlertDialog.Builder(requireContext())
-        val customView = LayoutInflater.from(requireContext()).inflate(R.layout.add_ticket_menu, null)
+        val customView = LayoutInflater.from(requireContext()).inflate(R.layout.add_other_menu, null)
         builder.setView(customView)
 
         val dialog = builder.create()
         dialog.show()
 
-        val ed = customView.findViewById<EditText>(R.id.dateInfoTicket)
+        val ed = customView.findViewById<EditText>(R.id.etDateOther)
         ed.transformIntoDatePicker(requireContext(),"MM/dd/yyyy")
 
-        val buttonExit = customView.findViewById<Button>(R.id.exitTicketDialog)
-        val buttonSave = customView.findViewById<Button>(R.id.saveTicketInfo)
+        val buttonExit = customView.findViewById<Button>(R.id.btnExitOther)
+        val buttonSave = customView.findViewById<Button>(R.id.btnSaveOther)
         buttonExit?.setOnClickListener{
             dialog.cancel()
         }
         buttonSave?.setOnClickListener{
 
-            val typeExpense = "Другое"
-            val mileage = customView.findViewById<EditText>(R.id.mileageInfoTicket).text.toString().toInt()
-            val date = customView.findViewById<EditText>(R.id.dateInfoTicket).text.toString()
-            val cost = customView.findViewById<EditText>(R.id.costInfoTicket).text.toString().toInt()
-            val comment = customView.findViewById<EditText>(R.id.commentInfoTicket).text.toString()
+            val typeExpense = "Прочее"
+            val mileage = customView.findViewById<EditText>(R.id.etMileageOther).text.toString().toInt()
+            val date = customView.findViewById<EditText>(R.id.etDateOther).text.toString()
+            val cost = customView.findViewById<EditText>(R.id.etPriceOther).text.toString().toInt()
+            val comment = customView.findViewById<EditText>(R.id.etCommentOther).text.toString()
             expenseViewModel.insert(Expense(null, typeExpense, mileage, date, cost, comment, selectedCarId)){}
         }
 
@@ -289,27 +289,27 @@ class MainFragment : Fragment() {
 
     private fun showAddTuningDialog(){
         val builder = AlertDialog.Builder(requireContext())
-        val customView = LayoutInflater.from(requireContext()).inflate(R.layout.add_ticket_menu, null)
+        val customView = LayoutInflater.from(requireContext()).inflate(R.layout.add_tunning_menu, null)
         builder.setView(customView)
 
         val dialog = builder.create()
         dialog.show()
 
-        val ed = customView.findViewById<EditText>(R.id.dateInfoTicket)
+        val ed = customView.findViewById<EditText>(R.id.etDateTuning)
         ed.transformIntoDatePicker(requireContext(),"MM/dd/yyyy")
 
-        val buttonExit = customView.findViewById<Button>(R.id.exitTicketDialog)
-        val buttonSave = customView.findViewById<Button>(R.id.saveTicketInfo)
+        val buttonExit = customView.findViewById<Button>(R.id.btnExitTuning)
+        val buttonSave = customView.findViewById<Button>(R.id.btnSaveTuning)
         buttonExit?.setOnClickListener{
             dialog.cancel()
         }
         buttonSave?.setOnClickListener{
 
             val typeExpense = "Тюнинг"
-            val mileage = customView.findViewById<EditText>(R.id.mileageInfoTicket).text.toString().toInt()
-            val date = customView.findViewById<EditText>(R.id.dateInfoTicket).text.toString()
-            val cost = customView.findViewById<EditText>(R.id.costInfoTicket).text.toString().toInt()
-            val comment = customView.findViewById<EditText>(R.id.commentInfoTicket).text.toString()
+            val mileage = customView.findViewById<EditText>(R.id.etMileageTuning).text.toString().toInt()
+            val date = customView.findViewById<EditText>(R.id.etDateTuning).text.toString()
+            val cost = customView.findViewById<EditText>(R.id.etPriceTuning).text.toString().toInt()
+            val comment = customView.findViewById<EditText>(R.id.etCommentTuning).text.toString()
             expenseViewModel.insert(Expense(null, typeExpense, mileage, date, cost, comment, selectedCarId)){}
         }
 

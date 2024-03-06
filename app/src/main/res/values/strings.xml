@@ -13,7 +13,7 @@
     <string name="type_fuel">Тип топлива\n</string>
     <string name="volume_l">Объём\n л</string>
     <string name="price_per_liter">Цена за литр</string>
-    <string name="other">Другое</string>
+    <string name="other">Прочее</string>
     <string name="parking">Парковка</string>
     <string name="refill">Заправка</string>
     <string name="wash">Мойка</string>
@@ -23,4 +23,7 @@
     <string name="create_year">Год выпуска</string>
     <string name="vin">VIN</string>
     <string name="reg_number">Госномер</string>
+    <string name="history_expense">История расходов</string>
+    <string name="tuning">Тюнинг</string>
+    <string name="tickets">Штрафы</string>
 </resources>
